@@ -11,9 +11,28 @@ config_version=5
 [application]
 
 config/name="TrashMan"
+run/main_scene="res://Scenes/grassy_area.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=270
+window/size/window_width_override=1344
+window/size/window_height_override=756
+window/stretch/mode="canvas_items"
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="world"
+
+[physics]
+
+2d/default_gravity=0.0
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
