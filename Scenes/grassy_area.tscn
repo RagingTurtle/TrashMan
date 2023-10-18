@@ -32,10 +32,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = -48.0
-offset_right = 504.0
-offset_bottom = 296.0
+offset_left = -56.0
+offset_top = -43.0
+offset_right = 496.0
+offset_bottom = 301.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -44,6 +44,7 @@ texture = ExtResource("2_0o8im")
 stretch_mode = 1
 
 [node name="TileMap" parent="." instance=ExtResource("2_ssqmf")]
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 458752, 0, 2, 458766, 131072, 2, 14, 131072, 0, 65550, 131072, 1, 131086, 131072, 1, 196622, 131072, 1, 262158, 131072, 1, 327694, 131072, 1, 393230, 131072, 1, 65536, 0, 1, 131072, 0, 1, 196608, 0, 1, 262144, 0, 1, 327680, 0, 1, 393216, 0, 1, 458753, 65536, 2, 458754, 65536, 2, 458755, 65536, 2, 458756, 65536, 2, 458757, 65536, 2, 458758, 65536, 2, 458759, 65536, 2, 458760, 65536, 2, 458761, 65536, 2, 458762, 65536, 2, 458763, 65536, 2, 458764, 65536, 2, 458765, 65536, 2, 1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 65536, 0, 6, 65536, 0, 7, 65536, 0, 8, 65536, 0, 9, 65536, 0, 10, 65536, 0, 11, 65536, 0, 12, 65536, 0, 13, 65536, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_mh2fl")]
 position = Vector2(45, 55)
