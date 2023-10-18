@@ -3,6 +3,9 @@ extends CharacterBody2D
 const SPEED = 300.0
 
 var walk_timer = Timer.new()
+var drop_timer = Timer.new()
+
+signal trash_dropped(Vector2)
 
 func _ready():
 	#start timer with it times out change direction
@@ -11,7 +14,12 @@ func _ready():
 	walk_timer.one_shot = true
 	add_child(walk_timer)
 	walk_timer.start()
-	
+
+	drop_timer.connect("timeout", drop_trash)
+	drop_timer.wait_time = 1.5
+	add_child(drop_timer)
+	drop_timer.start()
+		
 func _physics_process(delta):
 	move_and_slide()
 
@@ -19,3 +27,7 @@ func _change_walk_direction():
 	var direction = Vector2(randi_range(-1,1), randi_range(-1,1)).normalized()
 	velocity = direction * SPEED
 	walk_timer.start()
+	
+func drop_trash():
+	emit_signal("trash_dropped", global_position)
+	
