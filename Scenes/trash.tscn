@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://2d1luy8hy4d6"]
 
 [ext_resource type="Script" path="res://Scripts/trash.gd" id="1_8hm7y"]
-[ext_resource type="Texture2D" uid="uid://dum7qm1glb8ke" path="res://icon.svg" id="1_ckwbv"]
+[ext_resource type="Texture2D" uid="uid://b5c44jupddij5" path="res://Sprites/apple.png" id="2_laqi0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7jld"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aewqp"]
 
 [node name="Trash" type="Area2D"]
-scale = Vector2(0.205457, 0.205457)
+scale = Vector2(0.5, 0.5)
+collision_layer = 8
 script = ExtResource("1_8hm7y")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ckwbv")
+[node name="Apple" type="Sprite2D" parent="."]
+texture = ExtResource("2_laqi0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(6.44534, 6.44534)
-shape = SubResource("RectangleShape2D_q7jld")
+shape = SubResource("CapsuleShape2D_aewqp")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

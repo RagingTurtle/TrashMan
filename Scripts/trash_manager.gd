@@ -16,21 +16,21 @@ func _ready() -> void:
 	
 
 func _on_pick_up_trash(trash_piece: Area2D) -> void:
-	print("test")
-	trash_piece.reparent(in_bag)
+	trash_piece.call_deferred("reparent", in_bag)
 	#tween to bag
 	trash_piece.visible = false
 	
-func put_in_trashcan() -> void:
+func _on_dispose_trash() -> void:
+	print(in_bag.get_child_count())
 	if in_bag.get_child_count() > 0:
 		var trash_piece = in_bag.get_child(0)
 		#tween from bag to can
-		trash_piece.reparent(available_trash)
-
+		trash_piece.call_deferred("reparent", available_trash)
 
 func _on_trash_dropped(location: Vector2) -> void:
 	if available_trash.get_child_count() > 0:
 		var dropped = available_trash.get_child(0)
-		dropped.reparent(on_field)
+		dropped.call_deferred("reparent", on_field)
 		dropped.global_position = location
 		dropped.visible = true
+

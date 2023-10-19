@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://7v4nxlkj36mm"]
 
-[ext_resource type="Texture2D" uid="uid://cg314h7hjse2e" path="res://Assets/trashy.png" id="1_o6nhh"]
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_tdnqk"]
+[ext_resource type="Texture2D" uid="uid://cg314h7hjse2e" path="res://Sprites/trashy.png" id="2_2f0f4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vg6my"]
 size = Vector2(8, 12)
@@ -19,7 +19,7 @@ motion_mode = 1
 script = ExtResource("1_tdnqk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_o6nhh")
+texture = ExtResource("2_2f0f4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)

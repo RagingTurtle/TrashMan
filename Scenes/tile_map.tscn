@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bw6xp1y48e1fe"]
 
-[ext_resource type="Texture2D" uid="uid://dcq34tibpprgd" path="res://Assets/fence.png" id="1_vits4"]
+[ext_resource type="Texture2D" uid="uid://dcq34tibpprgd" path="res://Sprites/fence.png" id="1_vits4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5v1i2"]
 resource_name = "fence"
