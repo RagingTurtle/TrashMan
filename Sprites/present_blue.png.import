@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg314h7hjse2e"
-path="res://.godot/imported/trashy.png-2d9577f7168443c5f9fe7b7f8afe5e56.ctex"
+uid="uid://c6deb0nbupa21"
+path="res://.godot/imported/present_blue.png-9edfe022ac0a2cf843500ca388e899a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/trashy.png"
-dest_files=["res://.godot/imported/trashy.png-2d9577f7168443c5f9fe7b7f8afe5e56.ctex"]
+source_file="res://Sprites/present_blue.png"
+dest_files=["res://.godot/imported/present_blue.png-9edfe022ac0a2cf843500ca388e899a5.ctex"]
 
 [params]
 

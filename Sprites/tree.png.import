@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bifqyi3wm5643"
-path="res://.godot/imported/TrashMan.png-ad78589fb2221499e4076b1fe0f2296a.ctex"
+uid="uid://b65sh824cymsf"
+path="res://.godot/imported/tree.png-2bedb0b12015dbe361d6af1245334d57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TrashMan.png"
-dest_files=["res://.godot/imported/TrashMan.png-ad78589fb2221499e4076b1fe0f2296a.ctex"]
+source_file="res://Sprites/tree.png"
+dest_files=["res://.godot/imported/tree.png-2bedb0b12015dbe361d6af1245334d57.ctex"]
 
 [params]
 
