@@ -2,15 +2,15 @@
 
 importer="texture_atlas"
 type="Texture2D"
-uid="uid://b5c44jupddij5"
-path="res://.godot/imported/apple.png-f244e7ecb5b99913355a5f62514bf77f.res"
+uid="uid://dd6udeaifjjvi"
+path="res://.godot/imported/trash_can.png-292f1f529fbd917423bd013d57030480.res"
 group_file="res://Sprites/atlas/trash_sprites.png"
 valid=true
 [deps]
 
 
-source_file="res://Sprites/apple.png"
-dest_files=["res://.godot/imported/apple.png-f244e7ecb5b99913355a5f62514bf77f.res"]
+source_file="res://Sprites/trash_can.png"
+dest_files=["res://.godot/imported/trash_can.png-292f1f529fbd917423bd013d57030480.res"]
 
 [params]
 

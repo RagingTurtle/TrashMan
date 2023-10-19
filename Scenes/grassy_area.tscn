@@ -1,18 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://brc6f655taj1c"]
+[gd_scene load_steps=9 format=3 uid="uid://brc6f655taj1c"]
 
 [ext_resource type="PackedScene" uid="uid://cg1yna7m25nqf" path="res://Scenes/trash_manager.tscn" id="1_jb5tr"]
 [ext_resource type="PackedScene" uid="uid://cf5y03ynumcn5" path="res://Scenes/player.tscn" id="1_mh2fl"]
 [ext_resource type="Texture2D" uid="uid://dargb3drmhcs" path="res://Sprites/Grass.png" id="2_h611g"]
+[ext_resource type="Texture2D" uid="uid://c6bnc5pjcfexq" path="res://Sprites/bag_brown.png" id="2_nxkmq"]
 [ext_resource type="PackedScene" uid="uid://bw6xp1y48e1fe" path="res://Scenes/tile_map.tscn" id="2_ssqmf"]
+[ext_resource type="Texture2D" uid="uid://72p8lqnqd4yn" path="res://Sprites/bag_outline.png" id="3_gm3ru"]
 [ext_resource type="PackedScene" uid="uid://7v4nxlkj36mm" path="res://Scenes/enemy.tscn" id="4_1wdlt"]
 [ext_resource type="PackedScene" uid="uid://cb80ddq5vyy3w" path="res://Scenes/trashcan.tscn" id="6_nr74n"]
 
 [node name="GrassyArea" type="Node2D"]
-
-[node name="Trash Manager" parent="." instance=ExtResource("1_jb5tr")]
-
-[node name="Trashcan" parent="Trash Manager" instance=ExtResource("6_nr74n")]
-position = Vector2(152, 96)
 
 [node name="Grass" type="Control" parent="."]
 layout_mode = 3
@@ -40,14 +37,34 @@ size_flags_vertical = 4
 texture = ExtResource("2_h611g")
 stretch_mode = 1
 
+[node name="Trash Manager" parent="." instance=ExtResource("1_jb5tr")]
+
+[node name="Trashcan" parent="Trash Manager" instance=ExtResource("6_nr74n")]
+position = Vector2(152, 96)
+
 [node name="TileMap" parent="." instance=ExtResource("2_ssqmf")]
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 458752, 0, 2, 458766, 131072, 2, 14, 131072, 0, 65550, 131072, 1, 131086, 131072, 1, 196622, 131072, 1, 262158, 131072, 1, 327694, 131072, 1, 393230, 131072, 1, 65536, 0, 1, 131072, 0, 1, 196608, 0, 1, 262144, 0, 1, 327680, 0, 1, 393216, 0, 1, 458753, 65536, 2, 458754, 65536, 2, 458755, 65536, 2, 458756, 65536, 2, 458757, 65536, 2, 458758, 65536, 2, 458759, 65536, 2, 458760, 65536, 2, 458761, 65536, 2, 458762, 65536, 2, 458763, 65536, 2, 458764, 65536, 2, 458765, 65536, 2, 1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 65536, 0, 6, 65536, 0, 7, 65536, 0, 8, 65536, 0, 9, 65536, 0, 10, 65536, 0, 11, 65536, 0, 12, 65536, 0, 13, 65536, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("4_1wdlt")]
+position = Vector2(82, 58)
 
 [node name="Player" parent="." instance=ExtResource("1_mh2fl")]
 position = Vector2(45, 55)
 
-[node name="Enemy" parent="." instance=ExtResource("4_1wdlt")]
-position = Vector2(82, 58)
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Player"]
+offset_left = -34.0
+offset_top = -10.0
+offset_right = 6.0
+offset_bottom = 30.0
+scale = Vector2(0.519467, 0.641669)
+pivot_offset = Vector2(21.92, 6.975)
+max_value = 3.0
+step = 0.01
+value = 2.5
+fill_mode = 3
+texture_under = ExtResource("3_gm3ru")
+texture_progress = ExtResource("2_nxkmq")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="dispose_trash" from="Trash Manager/Trashcan" to="Trash Manager" method="_on_dispose_trash"]
 [connection signal="trash_dropped" from="Enemy" to="Trash Manager" method="_on_trash_dropped"]
