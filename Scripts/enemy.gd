@@ -20,8 +20,13 @@ func _ready():
 	add_child(drop_timer)
 	drop_timer.start()
 		
-func _physics_process(_delta):
+func _physics_process(delta):
 	move_and_slide()
+	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
+	if collision:
+		var reflect = collision.get_remainder().bounce(collision.get_normal())
+		velocity = velocity.bounce(collision.get_normal())
+		move_and_collide(reflect)
 
 func _change_walk_direction():
 	var direction: Vector2 = Vector2(randi_range(-1,1), randi_range(-1,1)).normalized()
