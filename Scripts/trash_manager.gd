@@ -10,7 +10,9 @@ extends Node2D
 @onready var in_bag: Node = $"Used Trash/In Bag"
 @onready var texture_progress_bar: TextureProgressBar = $"../Player/TextureProgressBar"
 @onready var coin_count_ui: Label = $"../Control/TextureRect/Coin Count"
+@onready var trashcan: Area2D = $Trashcan
 
+var coin = preload("res://Scenes/coin.tscn")
 var coin_count: int = 0
 
 func _ready() -> void:
@@ -36,7 +38,9 @@ func _on_pick_up_trash(trash_piece: Area2D) -> void:
 func _on_dispose_trash() -> void:
 	if in_bag.get_child_count() > 0:
 		var trash_piece: Area2D = in_bag.get_child(0)
-		#tween from bag to can
+		var coin_animation = coin.instantiate()
+		#coin_animation.get_node("Coin").global_position = trashcan.global_position
+		trashcan.add_child(coin_animation)
 		trash_piece.call_deferred("reparent", available_trash)
 		coin_count += 1
 		coin_count_ui.text = str(coin_count)
