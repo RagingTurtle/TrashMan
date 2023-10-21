@@ -11,6 +11,7 @@ extends Node2D
 @onready var on_field: Node = $"Used Trash/On Field"
 @onready var in_bag: Node = $"Used Trash/In Bag"
 @onready var trashcan: Area2D = $Trashcan
+@onready var bag_scale: Vector2 = bag.scale
 
 var coin = preload("res://Scenes/coin.tscn")
 var coin_count: int = 0
@@ -63,6 +64,6 @@ func bag_full_animation() -> void:
 	var bag_grow_amount: float = 1.25
 	var pulse_size_tween: Tween = create_tween()
 	pulse_size_tween.set_loops(2)
-	pulse_size_tween.tween_property(bag, "scale", bag.scale * bag_grow_amount, tween_duration)
-	pulse_size_tween.tween_property(bag, "scale", bag.scale, tween_duration).from(bag.scale * bag_grow_amount)
+	pulse_size_tween.tween_property(bag, "scale", bag_scale * bag_grow_amount, tween_duration).from(bag_scale)
+	pulse_size_tween.tween_property(bag, "scale", bag_scale, tween_duration).from(bag_scale * bag_grow_amount)
 	
