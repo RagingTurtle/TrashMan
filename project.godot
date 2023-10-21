@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/grassy_area.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MainSoundTrack="*res://Scenes/main_sound_track.tscn"
+
 [display]
 
 window/size/viewport_width=480
