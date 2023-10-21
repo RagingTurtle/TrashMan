@@ -3,14 +3,14 @@
 importer="texture_atlas"
 type="Texture2D"
 uid="uid://72p8lqnqd4yn"
-path="res://.godot/imported/bag_outline.png-f08ff9c4afe7e9c89f290c8d45e2d128.res"
+path="res://.godot/imported/bag_white.png-390384b81c21c4a8c46f0cb6405075e1.res"
 group_file="res://Sprites/atlas/bag_sprites.png"
 valid=true
 [deps]
 
 
-source_file="res://Sprites/bag_outline.png"
-dest_files=["res://.godot/imported/bag_outline.png-f08ff9c4afe7e9c89f290c8d45e2d128.res"]
+source_file="res://Sprites/bag_white.png"
+dest_files=["res://.godot/imported/bag_white.png-390384b81c21c4a8c46f0cb6405075e1.res"]
 
 [params]
 

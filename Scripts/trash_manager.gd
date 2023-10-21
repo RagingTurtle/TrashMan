@@ -4,12 +4,12 @@ extends Node2D
 @export var bag_fill_speed: float = 7
 @export var trash_scene: PackedScene
 @export var max_bag_capacity: int = 3
+@export var bag: TextureProgressBar
+@export var coin_count_ui: Label
 
 @onready var available_trash: Node = $"Available Trash"
 @onready var on_field: Node = $"Used Trash/On Field"
 @onready var in_bag: Node = $"Used Trash/In Bag"
-@onready var texture_progress_bar: TextureProgressBar = $"../Player/TextureProgressBar"
-@onready var coin_count_ui: Label = $"../Control/TextureRect/Coin Count"
 @onready var trashcan: Area2D = $Trashcan
 
 var coin = preload("res://Scenes/coin.tscn")
@@ -17,9 +17,9 @@ var coin_count: int = 0
 
 func _ready() -> void:
 	coin_count_ui.text = str(0)
-	texture_progress_bar.min_value = 0
-	texture_progress_bar.max_value = max_bag_capacity
-	texture_progress_bar.value = in_bag.get_child_count()
+	bag.min_value = 0
+	bag.max_value = max_bag_capacity
+	bag.value = in_bag.get_child_count()
 	for i in range(max_trash):
 		var trash_piece: Area2D = trash_scene.instantiate()
 		trash_piece.connect("pick_up_trash", _on_pick_up_trash)
@@ -27,13 +27,14 @@ func _ready() -> void:
 		available_trash.add_child(trash_piece)
 
 func _process(delta: float) -> void:
-	texture_progress_bar.value = lerp(texture_progress_bar.value, float(in_bag.get_child_count()), delta * bag_fill_speed)
+	bag.value = lerp(bag.value, float(in_bag.get_child_count()), delta * bag_fill_speed)
 
 func _on_pick_up_trash(trash_piece: Area2D) -> void:
 	if in_bag.get_child_count() < max_bag_capacity:
 		trash_piece.call_deferred("reparent", in_bag)
-		#tween to bag
 		trash_piece.visible = false
+	else:
+		bag_full_animation()
 	
 func _on_dispose_trash() -> void:
 	if in_bag.get_child_count() > 0:
@@ -51,3 +52,17 @@ func _on_trash_dropped(location: Vector2) -> void:
 		dropped.call_deferred("reparent", on_field)
 		dropped.global_position = location
 		dropped.visible = true
+
+func bag_full_animation() -> void:
+	var tween_duration: float = .5
+	var turn_red_tween: Tween = create_tween()
+	turn_red_tween.set_loops(2)
+	turn_red_tween.tween_property(bag, "modulate", Color.RED, tween_duration)
+	turn_red_tween.tween_property(bag, "modulate", Color.WHITE, tween_duration).from(Color.RED)
+	
+	var bag_grow_amount: float = 1.25
+	var pulse_size_tween: Tween = create_tween()
+	pulse_size_tween.set_loops(2)
+	pulse_size_tween.tween_property(bag, "scale", bag.scale * bag_grow_amount, tween_duration)
+	pulse_size_tween.tween_property(bag, "scale", bag.scale, tween_duration).from(bag.scale * bag_grow_amount)
+	

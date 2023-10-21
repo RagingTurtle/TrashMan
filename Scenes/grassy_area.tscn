@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://cg1yna7m25nqf" path="res://Scenes/trash_manager.tscn" id="1_jb5tr"]
 [ext_resource type="PackedScene" uid="uid://cf5y03ynumcn5" path="res://Scenes/player.tscn" id="1_mh2fl"]
 [ext_resource type="Texture2D" uid="uid://dargb3drmhcs" path="res://Sprites/Grass.png" id="2_h611g"]
-[ext_resource type="Texture2D" uid="uid://c6bnc5pjcfexq" path="res://Sprites/bag_brown.png" id="2_nxkmq"]
 [ext_resource type="PackedScene" uid="uid://bw6xp1y48e1fe" path="res://Scenes/tile_map.tscn" id="2_ssqmf"]
-[ext_resource type="Texture2D" uid="uid://72p8lqnqd4yn" path="res://Sprites/bag_outline.png" id="3_gm3ru"]
 [ext_resource type="PackedScene" uid="uid://7v4nxlkj36mm" path="res://Scenes/enemy.tscn" id="4_1wdlt"]
 [ext_resource type="PackedScene" uid="uid://cb80ddq5vyy3w" path="res://Scenes/trashcan.tscn" id="6_nr74n"]
+[ext_resource type="Texture2D" uid="uid://72p8lqnqd4yn" path="res://Sprites/bag_white.png" id="7_20fax"]
+[ext_resource type="Texture2D" uid="uid://c6bnc5pjcfexq" path="res://Sprites/bag_full.png" id="8_o73xh"]
 [ext_resource type="Texture2D" uid="uid://ibhpwc18v4yo" path="res://Sprites/trashCoin-sheet.png" id="9_57cw7"]
 [ext_resource type="FontFile" uid="uid://cqsvwr0rmlcn0" path="res://Fonts/TrashMan.ttf" id="10_1758l"]
 
@@ -112,7 +112,9 @@ size_flags_vertical = 4
 texture = ExtResource("2_h611g")
 stretch_mode = 1
 
-[node name="Trash Manager" parent="." instance=ExtResource("1_jb5tr")]
+[node name="Trash Manager" parent="." node_paths=PackedStringArray("bag", "coin_count_ui") instance=ExtResource("1_jb5tr")]
+bag = NodePath("../Player/Bag")
+coin_count_ui = NodePath("../Control/TextureRect/Coin Count")
 
 [node name="Trashcan" parent="Trash Manager" instance=ExtResource("6_nr74n")]
 position = Vector2(152, 96)
@@ -126,7 +128,7 @@ position = Vector2(82, 58)
 [node name="Player" parent="." instance=ExtResource("1_mh2fl")]
 position = Vector2(45, 55)
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Player"]
+[node name="Bag" type="TextureProgressBar" parent="Player"]
 offset_left = -34.0
 offset_top = -10.0
 offset_right = 6.0
@@ -137,8 +139,8 @@ max_value = 3.0
 step = 0.01
 value = 2.5
 fill_mode = 3
-texture_under = ExtResource("3_gm3ru")
-texture_progress = ExtResource("2_nxkmq")
+texture_under = ExtResource("7_20fax")
+texture_progress = ExtResource("8_o73xh")
 metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Control" parent="."]
