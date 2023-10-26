@@ -5,8 +5,8 @@ extends Node2D
 @export var trash_scene: PackedScene
 @export var max_bag_capacity: int = 3
 @export var bag: TextureProgressBar
-@export var coin_count_ui: Label
 
+@onready var coin_display_label: Label = $"../CoinDisplay/Coin Count"
 @onready var available_trash: Node = $"Available Trash"
 @onready var on_field: Node = $"Used Trash/On Field"
 @onready var in_bag: Node = $"Used Trash/In Bag"
@@ -17,7 +17,7 @@ var coin = preload("res://Scenes/coin.tscn")
 var coin_count: int = 0
 
 func _ready() -> void:
-	coin_count_ui.text = str(0)
+	coin_display_label.text = str(0)
 	bag.min_value = 0
 	bag.max_value = max_bag_capacity
 	bag.value = in_bag.get_child_count()
@@ -45,7 +45,7 @@ func _on_dispose_trash() -> void:
 		trashcan.add_child(coin_animation)
 		trash_piece.call_deferred("reparent", available_trash)
 		coin_count += 1
-		coin_count_ui.text = str(coin_count)
+		coin_display_label.text = str(coin_count)
 
 func _on_trash_dropped(location: Vector2) -> void:
 	if available_trash.get_child_count() > 0:

@@ -23,8 +23,8 @@ MainSoundTrack="*res://Scenes/main_sound_track.tscn"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/size/window_width_override=1344
-window/size/window_height_override=756
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
 [layer_names]
@@ -43,4 +43,5 @@ window/stretch/mode="canvas_items"
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.243137, 0.486275, 0.027451, 1)

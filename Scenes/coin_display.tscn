@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bys0ieax8wl5b"]
+
+[ext_resource type="Texture2D" uid="uid://ibhpwc18v4yo" path="res://Sprites/trashCoin-sheet.png" id="1_fco3i"]
+[ext_resource type="FontFile" uid="uid://cqsvwr0rmlcn0" path="res://Fonts/TrashMan.ttf" id="2_stfrj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uvd5p"]
+font = ExtResource("2_stfrj")
+font_size = 20
+outline_size = 1
+outline_color = Color(0.109804, 0.109804, 0.109804, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.815686)
+
+[node name="CoinDisplay" type="ColorRect"]
+offset_left = 15.0
+offset_top = 1.0
+offset_right = 111.0
+offset_bottom = 33.0
+color = Color(0.156863, 0.156863, 0.156863, 0.588235)
+
+[node name="Coin" type="Sprite2D" parent="."]
+texture = ExtResource("1_fco3i")
+offset = Vector2(16, 16)
+hframes = 8
+
+[node name="Coin Count" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(16, 16)
+text = "9999"
+label_settings = SubResource("LabelSettings_uvd5p")
+horizontal_alignment = 1
+vertical_alignment = 1
