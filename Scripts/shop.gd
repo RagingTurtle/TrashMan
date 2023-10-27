@@ -1,12 +1,10 @@
 extends Control
 
+@onready var coin_manager: Node2D = $"Coin Manager"
+
 var shop_items: Dictionary = {"trashcan": 2, "bag": 3, "drink": 1}
-var coin_amount: int = 2
 var selected_item: String
 
-func _ready() -> void:
-	$"CoinDisplay/Coin Count".text = str(coin_amount)
-	
 func _on_trashcan_pressed() -> void:
 	shake_button($Background/Trashcan)
 	select_item_debug(select_item("trashcan"))
@@ -35,7 +33,7 @@ func _on_bag_box_focus_exited() -> void:
 
 func select_item(item: String) -> bool:
 	if item in shop_items:
-		if shop_items[item] > coin_amount:
+		if shop_items[item] > coin_manager.coin_amount:
 			$Background/Dialog.text = "[color=black][font_size=10]"
 			$Background/Dialog.text += "you don't have enough\n"
 			$Background/Dialog.text += "[img=10x10]res://Sprites/coin.png"
@@ -51,8 +49,7 @@ func select_item(item: String) -> bool:
 	return false
 
 func _on_buy_button_pressed() -> void:
-	coin_amount -= shop_items[selected_item]
-	$"CoinDisplay/Coin Count".text = str(coin_amount)
+	coin_manager.coin_amount -= shop_items[selected_item]
 	select_item(selected_item)
 
 func select_item_debug(result: bool) -> void:
@@ -60,4 +57,4 @@ func select_item_debug(result: bool) -> void:
 		print("success")
 	else:
 		print("fail")
-	print(coin_amount)
+	print(coin_manager.coin_amount)

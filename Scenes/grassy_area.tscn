@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://7v4nxlkj36mm" path="res://Scenes/enemy.tscn" id="4_1wdlt"]
 [ext_resource type="PackedScene" uid="uid://cb80ddq5vyy3w" path="res://Scenes/trashcan.tscn" id="6_nr74n"]
 [ext_resource type="Texture2D" uid="uid://72p8lqnqd4yn" path="res://Sprites/bag_white.png" id="7_20fax"]
+[ext_resource type="PackedScene" uid="uid://cjngg7k0w7xju" path="res://Scenes/coin_manager.tscn" id="7_j78q6"]
 [ext_resource type="Texture2D" uid="uid://c6bnc5pjcfexq" path="res://Sprites/bag_full.png" id="8_o73xh"]
-[ext_resource type="PackedScene" uid="uid://bys0ieax8wl5b" path="res://Scenes/coin_display.tscn" id="9_srsfu"]
 
 [node name="GrassyArea" type="Node2D"]
 position = Vector2(1, 18)
@@ -39,12 +39,6 @@ size_flags_vertical = 4
 texture = ExtResource("2_h611g")
 stretch_mode = 1
 
-[node name="Trash Manager" parent="." node_paths=PackedStringArray("bag") instance=ExtResource("1_jb5tr")]
-bag = NodePath("../Player/Bag")
-
-[node name="Trashcan" parent="Trash Manager" instance=ExtResource("6_nr74n")]
-position = Vector2(152, 96)
-
 [node name="TileMap" parent="." instance=ExtResource("2_ssqmf")]
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 458752, 0, 2, 458766, 131072, 2, 14, 131072, 0, 65550, 131072, 1, 131086, 131072, 1, 196622, 131072, 1, 262158, 131072, 1, 327694, 131072, 1, 393230, 131072, 1, 65536, 0, 1, 131072, 0, 1, 196608, 0, 1, 262144, 0, 1, 327680, 0, 1, 393216, 0, 1, 458753, 65536, 2, 458754, 65536, 2, 458755, 65536, 2, 458756, 65536, 2, 458757, 65536, 2, 458758, 65536, 2, 458759, 65536, 2, 458760, 65536, 2, 458761, 65536, 2, 458762, 65536, 2, 458763, 65536, 2, 458764, 65536, 2, 458765, 65536, 2, 1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 65536, 0, 6, 65536, 0, 7, 65536, 0, 8, 65536, 0, 9, 65536, 0, 10, 65536, 0, 11, 65536, 0, 12, 65536, 0, 13, 65536, 0)
 
@@ -69,7 +63,13 @@ texture_under = ExtResource("7_20fax")
 texture_progress = ExtResource("8_o73xh")
 metadata/_edit_use_anchors_ = true
 
-[node name="CoinDisplay" parent="." instance=ExtResource("9_srsfu")]
+[node name="Coin Manager" parent="." instance=ExtResource("7_j78q6")]
 
-[connection signal="dispose_trash" from="Trash Manager/Trashcan" to="Trash Manager" method="_on_dispose_trash"]
+[node name="Trash Manager" parent="." node_paths=PackedStringArray("bag") instance=ExtResource("1_jb5tr")]
+bag = NodePath("../Player/Bag")
+
+[node name="Trashcan" parent="Trash Manager" instance=ExtResource("6_nr74n")]
+position = Vector2(152, 96)
+
 [connection signal="trash_dropped" from="Enemy" to="Trash Manager" method="_on_trash_dropped"]
+[connection signal="dispose_trash" from="Trash Manager/Trashcan" to="Trash Manager" method="_on_dispose_trash"]
