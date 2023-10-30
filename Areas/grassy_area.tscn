@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://brc6f655taj1c"]
+[gd_scene load_steps=12 format=3 uid="uid://brc6f655taj1c"]
 
 [ext_resource type="PackedScene" uid="uid://cg1yna7m25nqf" path="res://Managers/trash_manager.tscn" id="1_jb5tr"]
 [ext_resource type="PackedScene" uid="uid://cf5y03ynumcn5" path="res://Characters/player.tscn" id="1_mh2fl"]
@@ -9,9 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://72p8lqnqd4yn" path="res://Sprites/bag_white.png" id="7_20fax"]
 [ext_resource type="PackedScene" uid="uid://cjngg7k0w7xju" path="res://Managers/coin_manager.tscn" id="7_j78q6"]
 [ext_resource type="Texture2D" uid="uid://c6bnc5pjcfexq" path="res://Sprites/bag_full.png" id="8_o73xh"]
+[ext_resource type="Script" path="res://Items/shopsign.gd" id="10_nsfmh"]
+[ext_resource type="Texture2D" uid="uid://c1gh5tvincpy4" path="res://Sprites/signPost.png" id="11_3q7e3"]
 
 [node name="GrassyArea" type="Node2D"]
-position = Vector2(1, 18)
 
 [node name="Grass" type="Control" parent="."]
 layout_mode = 3
@@ -40,6 +41,7 @@ texture = ExtResource("2_h611g")
 stretch_mode = 1
 
 [node name="TileMap" parent="." instance=ExtResource("2_ssqmf")]
+position = Vector2(0, 10)
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 458752, 0, 2, 458766, 131072, 2, 14, 131072, 0, 65550, 131072, 1, 131086, 131072, 1, 196622, 131072, 1, 262158, 131072, 1, 327694, 131072, 1, 393230, 131072, 1, 65536, 0, 1, 131072, 0, 1, 196608, 0, 1, 262144, 0, 1, 327680, 0, 1, 393216, 0, 1, 458753, 65536, 2, 458754, 65536, 2, 458755, 65536, 2, 458756, 65536, 2, 458757, 65536, 2, 458758, 65536, 2, 458759, 65536, 2, 458760, 65536, 2, 458761, 65536, 2, 458762, 65536, 2, 458763, 65536, 2, 458764, 65536, 2, 458765, 65536, 2, 1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 65536, 0, 6, 65536, 0, 7, 65536, 0, 8, 65536, 0, 9, 65536, 0, 10, 65536, 0, 11, 65536, 0, 12, 65536, 0, 13, 65536, 0)
 
 [node name="Enemy" parent="." instance=ExtResource("4_1wdlt")]
@@ -71,5 +73,16 @@ bag = NodePath("../Player/Bag")
 [node name="Trashcan" parent="Trash Manager" instance=ExtResource("6_nr74n")]
 position = Vector2(152, 96)
 
+[node name="Shop Sign" type="Area2D" parent="."]
+position = Vector2(182.025, 96)
+script = ExtResource("10_nsfmh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Shop Sign"]
+polygon = PackedVector2Array(3, -12, 6.6, -12, 16, -5.4, 16, -1, 13, 3, 9.3, 3, 4.1, 3.7, 5, 16, -5, 16, -5, 4, -16, 4, -16, -9, -15.1, -9, -5, -11.5, -5, -16, 3, -16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Shop Sign"]
+texture = ExtResource("11_3q7e3")
+
 [connection signal="trash_dropped" from="Enemy" to="Trash Manager" method="_on_trash_dropped"]
 [connection signal="dispose_trash" from="Trash Manager/Trashcan" to="Trash Manager" method="_on_dispose_trash"]
+[connection signal="body_entered" from="Shop Sign" to="Shop Sign" method="_on_body_entered"]

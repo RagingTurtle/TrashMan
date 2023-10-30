@@ -4,6 +4,8 @@ extends Control
 
 var shop_items: Dictionary = {"trashcan": 2, "bag": 3, "drink": 1}
 var selected_item: String
+var player_body: Node2D
+var main_scene_coin_manager: Node2D
 
 func _on_trashcan_pressed() -> void:
 	shake_button($Background/Trashcan)
@@ -58,3 +60,9 @@ func select_item_debug(result: bool) -> void:
 	else:
 		print("fail")
 	print(coin_manager.coin_amount)
+
+
+func _on_exit_button_pressed() -> void:
+	player_body.movement_disabled = false
+	main_scene_coin_manager.coin_amount = coin_manager.coin_amount
+	self.queue_free()

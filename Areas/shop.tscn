@@ -18,6 +18,8 @@
 script = ExtResource("12_2wp11")
 
 [node name="Shop" type="Control"]
+z_index = 10
+layout_direction = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,9 +123,18 @@ icon_alignment = 1
 
 [node name="Coin Manager" parent="." instance=ExtResource("12_7fmn3")]
 
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 222.0
+offset_right = 411.0
+offset_bottom = 253.0
+text = "Exit Shop"
+
 [connection signal="pressed" from="Background/Trashcan" to="." method="_on_trashcan_pressed"]
 [connection signal="focus_entered" from="Background/BagBox" to="." method="_on_bag_box_focus_entered"]
 [connection signal="focus_exited" from="Background/BagBox" to="." method="_on_bag_box_focus_exited"]
 [connection signal="pressed" from="Background/BagBox" to="." method="_on_bag_box_pressed"]
 [connection signal="pressed" from="Background/EnergyDrink" to="." method="_on_energy_drink_pressed"]
 [connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

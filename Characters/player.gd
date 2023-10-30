@@ -2,7 +2,15 @@ extends CharacterBody2D
 
 @export var speed: float = 300.0
 
+var movement_disabled: bool = false
+
 func _physics_process(_delta):
+	if !movement_disabled:
+		player_movement()
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
+
+func player_movement() -> void:
 	var directionx: float = Input.get_axis("ui_left", "ui_right")
 	if directionx:
 		velocity.x = directionx * speed
@@ -15,7 +23,4 @@ func _physics_process(_delta):
 	else:
 		velocity.y = move_toward(velocity.y, 0, speed)
 	
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
-		
 	move_and_slide()
