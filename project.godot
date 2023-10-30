@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="TrashMan"
-run/main_scene="res://Scenes/grassy_area.tscn"
+run/main_scene="res://Areas/grassy_area.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-MainSoundTrack="*res://Scenes/main_sound_track.tscn"
+MainSoundTrack="*res://Autoload/main_sound_track.tscn"
 
 [display]
 

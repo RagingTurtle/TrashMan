@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cg1yna7m25nqf"]
 
-[ext_resource type="Script" path="res://Scripts/trash_manager.gd" id="1_4avp6"]
-[ext_resource type="PackedScene" uid="uid://dhcscn1eswejb" path="res://Scenes/trash.tscn" id="2_k51ue"]
+[ext_resource type="Script" path="res://Managers/trash_manager.gd" id="1_4avp6"]
+[ext_resource type="PackedScene" uid="uid://dhcscn1eswejb" path="res://Items/trash.tscn" id="2_k51ue"]
 
 [node name="Trash Manager" type="Node2D"]
 script = ExtResource("1_4avp6")

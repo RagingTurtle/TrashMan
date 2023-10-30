@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cb80ddq5vyy3w"]
 
-[ext_resource type="Script" path="res://Scripts/trashcan.gd" id="1_8s34e"]
+[ext_resource type="Script" path="res://Items/trashcan.gd" id="1_8s34e"]
 [ext_resource type="Texture2D" uid="uid://cg6v6efjxjpty" path="res://Sprites/trashcan.png" id="1_fdhsv"]
 
 [node name="Trashcan" type="Area2D"]

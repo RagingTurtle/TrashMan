@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://d0s2pqd6fjp3d"]
+[gd_scene load_steps=15 format=3 uid="uid://d0s2pqd6fjp3d"]
 
-[ext_resource type="Script" path="res://Scripts/shop.gd" id="1_bmduc"]
+[ext_resource type="Script" path="res://Areas/shop.gd" id="1_bmduc"]
 [ext_resource type="Texture2D" uid="uid://rk15wwhw0are" path="res://Sprites/shop/shop_background.png" id="1_brvwh"]
 [ext_resource type="Texture2D" uid="uid://bfc1rdl87hwo4" path="res://Sprites/shop/trash_can.png" id="2_fiqpv"]
 [ext_resource type="Texture2D" uid="uid://clv5ncte2adoc" path="res://Sprites/shop/bag_box.png" id="3_3vaxw"]
@@ -11,15 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://i1dne8f5haxx" path="res://Sprites/shop/words.png" id="6_w2mlt"]
 [ext_resource type="Texture2D" uid="uid://cteprl7lnqtdy" path="res://Sprites/shop/bag_focus.png" id="8_qcl06"]
 [ext_resource type="Texture2D" uid="uid://bexc38l1umdrm" path="res://Sprites/shop/energy_cans_focus.png" id="9_i6ck1"]
-[ext_resource type="Script" path="res://Scripts/bbcode_uppercase.gd" id="12_2wp11"]
-[ext_resource type="PackedScene" uid="uid://bys0ieax8wl5b" path="res://Scenes/coin_display.tscn" id="12_7fmn3"]
+[ext_resource type="Script" path="res://BBCode/bbcode_uppercase.gd" id="12_2wp11"]
+[ext_resource type="PackedScene" uid="uid://cjngg7k0w7xju" path="res://Managers/coin_manager.tscn" id="12_7fmn3"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_a6ddq"]
-line_spacing = 1.0
-font_size = 10
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_31lda"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_75nje"]
 script = ExtResource("12_2wp11")
 
 [node name="Shop" type="Control"]
@@ -102,17 +97,6 @@ offset_right = 354.0
 offset_bottom = 97.0
 texture = ExtResource("6_w2mlt")
 
-[node name="Dialog2" type="Label" parent="Background"]
-layout_mode = 0
-offset_left = 291.0
-offset_top = 77.0
-offset_right = 373.0
-offset_bottom = 108.0
-text = "buy this item?"
-label_settings = SubResource("LabelSettings_a6ddq")
-autowrap_mode = 3
-uppercase = true
-
 [node name="Dialog" type="RichTextLabel" parent="Background"]
 layout_mode = 0
 offset_left = 289.0
@@ -120,18 +104,12 @@ offset_top = 76.0
 offset_right = 408.0
 offset_bottom = 108.0
 bbcode_enabled = true
-text = "[color=black] [font_size=10][upper] buy this item[/upper][/size]"
+text = "[color=black][upper]help Me2"
 scroll_active = false
-custom_effects = [SubResource("RichTextEffect_31lda")]
+custom_effects = [SubResource("RichTextEffect_75nje")]
 
-[node name="CoinDisplay" parent="." instance=ExtResource("12_7fmn3")]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 96.0
-offset_bottom = 32.0
-
-[node name="Button" type="Button" parent="."]
+[node name="BuyButton" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 259.0
 offset_top = 81.0
@@ -141,8 +119,11 @@ theme_override_font_sizes/font_size = 9
 text = "BUY"
 icon_alignment = 1
 
+[node name="Coin Manager" parent="." instance=ExtResource("12_7fmn3")]
+
 [connection signal="pressed" from="Background/Trashcan" to="." method="_on_trashcan_pressed"]
 [connection signal="focus_entered" from="Background/BagBox" to="." method="_on_bag_box_focus_entered"]
 [connection signal="focus_exited" from="Background/BagBox" to="." method="_on_bag_box_focus_exited"]
 [connection signal="pressed" from="Background/BagBox" to="." method="_on_bag_box_pressed"]
 [connection signal="pressed" from="Background/EnergyDrink" to="." method="_on_energy_drink_pressed"]
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]

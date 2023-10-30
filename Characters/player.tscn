@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cf5y03ynumcn5"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_fshqu"]
+[ext_resource type="Script" path="res://Characters/player.gd" id="1_fshqu"]
 [ext_resource type="Texture2D" uid="uid://bifqyi3wm5643" path="res://Sprites/TrashMan.png" id="2_gc7gg"]
 
 [node name="Player" type="CharacterBody2D"]

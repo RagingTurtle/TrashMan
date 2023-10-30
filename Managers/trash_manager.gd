@@ -13,7 +13,7 @@ extends Node2D
 @onready var coin_manager: Node2D = $"../Coin Manager"
 @onready var bag_scale: Vector2 = bag.scale
 
-var coin = preload("res://Scenes/coin.tscn")
+var coin = preload("res://Items/coin.tscn")
 
 func _ready() -> void:
 	bag.min_value = 0
