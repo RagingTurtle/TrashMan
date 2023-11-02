@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://brc6f655taj1c"]
+[gd_scene load_steps=13 format=3 uid="uid://brc6f655taj1c"]
 
 [ext_resource type="PackedScene" uid="uid://cg1yna7m25nqf" path="res://Managers/trash_manager.tscn" id="1_jb5tr"]
 [ext_resource type="PackedScene" uid="uid://cf5y03ynumcn5" path="res://Characters/player.tscn" id="1_mh2fl"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c6bnc5pjcfexq" path="res://Sprites/bag_full.png" id="8_o73xh"]
 [ext_resource type="Script" path="res://Items/shopsign.gd" id="10_nsfmh"]
 [ext_resource type="Texture2D" uid="uid://c1gh5tvincpy4" path="res://Sprites/signPost.png" id="11_3q7e3"]
+[ext_resource type="PackedScene" uid="uid://clmc3c06mou67" path="res://Managers/item_boost_manager.tscn" id="12_f50uq"]
 
 [node name="GrassyArea" type="Node2D"]
 
@@ -65,6 +66,8 @@ texture_under = ExtResource("7_20fax")
 texture_progress = ExtResource("8_o73xh")
 metadata/_edit_use_anchors_ = true
 
+[node name="Item Boost Manager" parent="." instance=ExtResource("12_f50uq")]
+
 [node name="Coin Manager" parent="." instance=ExtResource("7_j78q6")]
 
 [node name="Trash Manager" parent="." node_paths=PackedStringArray("bag") instance=ExtResource("1_jb5tr")]
@@ -74,7 +77,7 @@ bag = NodePath("../Player/Bag")
 position = Vector2(152, 96)
 
 [node name="Shop Sign" type="Area2D" parent="."]
-position = Vector2(182.025, 96)
+position = Vector2(232, 145)
 script = ExtResource("10_nsfmh")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Shop Sign"]

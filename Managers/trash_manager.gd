@@ -1,6 +1,6 @@
 extends Node2D
 
-@export_range(0,100) var max_trash: int = 5
+@export_range(0,100) var trash_pool_size: int = 5
 @export var bag_fill_speed: float = 7
 @export var trash_scene: PackedScene
 @export var max_bag_capacity: int = 3
@@ -19,14 +19,17 @@ func _ready() -> void:
 	bag.min_value = 0
 	bag.max_value = max_bag_capacity
 	bag.value = in_bag.get_child_count()
-	for i in range(max_trash):
+	initialize_trash_pool()
+
+func _process(delta: float) -> void:
+	bag.value = lerp(bag.value, float(in_bag.get_child_count()), delta * bag_fill_speed)
+
+func initialize_trash_pool() -> void:
+	for i in range(trash_pool_size):
 		var trash_piece: Area2D = trash_scene.instantiate()
 		trash_piece.connect("pick_up_trash", _on_pick_up_trash)
 		trash_piece.visible = false
 		available_trash.add_child(trash_piece)
-
-func _process(delta: float) -> void:
-	bag.value = lerp(bag.value, float(in_bag.get_child_count()), delta * bag_fill_speed)
 
 func _on_pick_up_trash(trash_piece: Area2D) -> void:
 	if in_bag.get_child_count() < max_bag_capacity:

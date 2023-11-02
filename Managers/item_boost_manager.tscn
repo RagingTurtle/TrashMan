@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://clmc3c06mou67"]
+
+[ext_resource type="Script" path="res://Managers/item_boost_manager.gd" id="1_t23tw"]
+
+[node name="Stat Manager" type="Node"]
+script = ExtResource("1_t23tw")

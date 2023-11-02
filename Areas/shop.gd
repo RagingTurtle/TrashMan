@@ -1,22 +1,42 @@
 extends Control
 
+signal upgrade_stat
+
 @onready var coin_manager: Node2D = $"Coin Manager"
 
-var shop_items: Dictionary = {"trashcan": 2, "bag": 3, "drink": 1}
-var selected_item: String
+enum Item {
+	TRASHCAN,
+	BAGBOX,
+	ENERGY_DRINK
+}
+
+const item_name: Dictionary = {
+	Item.TRASHCAN: "trashcan",
+	Item.BAGBOX: "bags", 
+	Item.ENERGY_DRINK: "energy drink"
+	}
+
+var item_cost: Dictionary = {
+	Item.TRASHCAN: 1,
+	Item.BAGBOX: 1, 
+	Item.ENERGY_DRINK: 1
+	}
+	
+var selected_item: Item = Item.TRASHCAN
 var player_body: Node2D
 var main_scene_coin_manager: Node2D
+var main_scene: Node2D
 
 func _on_trashcan_pressed() -> void:
+	select_item(Item.TRASHCAN)
 	shake_button($Background/Trashcan)
-	select_item_debug(select_item("trashcan"))
 
 func _on_bag_box_pressed() -> void:
-	select_item_debug(select_item("bag"))
+	select_item(Item.BAGBOX)
 	shake_button($Background/BagBox)
 
 func _on_energy_drink_pressed() -> void:
-	select_item_debug(select_item("drink"))
+	select_item(Item.ENERGY_DRINK)
 	shake_button($Background/EnergyDrink)
 
 func shake_button(button: TextureButton):
@@ -33,35 +53,30 @@ func _on_bag_box_focus_entered() -> void:
 func _on_bag_box_focus_exited() -> void:
 	$Background/BagBox/Bag/BagFocus.visible = false
 
-func select_item(item: String) -> bool:
-	if item in shop_items:
-		if shop_items[item] > coin_manager.coin_amount:
-			$Background/Dialog.text = "[color=black][font_size=10]"
-			$Background/Dialog.text += "you don't have enough\n"
-			$Background/Dialog.text += "[img=10x10]res://Sprites/coin.png"
-			$BuyButton.visible = false
-			return false
-		else:
-			$Background/Dialog.text = "[color=black][font_size=10]"
-			$Background/Dialog.text += (str(item) + " costs " + str(shop_items[item])).to_upper()
-			$Background/Dialog.text += "[img=10x10]res://Sprites/coin.png"
-			$BuyButton.visible = true
-			selected_item = item
-			return true
-	return false
+func select_item(item: Item) -> bool:
+	if item not in item_name:
+		return false
+
+	var cost = item_cost[item]
+	var dialog_text = "[color=black][font_size=10]"
+
+	if cost > coin_manager.coin_amount:
+		dialog_text += "you don't have enough\n"
+		$BuyButton.visible = false
+	else:
+		dialog_text += item_name[item] + " costs " + str(cost).to_upper()
+		$BuyButton.visible = true
+		selected_item = item
+
+	$Background/Dialog.text = dialog_text + "[img=10x10]res://Sprites/coin.png"
+	return true
 
 func _on_buy_button_pressed() -> void:
-	coin_manager.coin_amount -= shop_items[selected_item]
+	coin_manager.coin_amount -= item_cost[selected_item]
+	item_cost[selected_item] *= 2
 	select_item(selected_item)
-
-func select_item_debug(result: bool) -> void:
-	if result:
-		print("success")
-	else:
-		print("fail")
-	print(coin_manager.coin_amount)
-
-
+	emit_signal("upgrade_stat", selected_item)
+	
 func _on_exit_button_pressed() -> void:
 	player_body.movement_disabled = false
 	main_scene_coin_manager.coin_amount = coin_manager.coin_amount

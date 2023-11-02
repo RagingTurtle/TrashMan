@@ -10,3 +10,5 @@ func _on_body_entered(body: Node2D) -> void:
 		$"../..".add_child(shop)
 		shop.coin_manager.coin_amount = $"../Coin Manager".coin_amount
 		shop.main_scene_coin_manager = $"../Coin Manager"
+		shop.main_scene = $".."
+		shop.upgrade_stat.connect($"../Item Boost Manager"._on_upgrade_stat)
