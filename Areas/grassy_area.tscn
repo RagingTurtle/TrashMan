@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://brc6f655taj1c"]
+[gd_scene load_steps=14 format=3 uid="uid://brc6f655taj1c"]
 
 [ext_resource type="PackedScene" uid="uid://cg1yna7m25nqf" path="res://Managers/trash_manager.tscn" id="1_jb5tr"]
 [ext_resource type="PackedScene" uid="uid://cf5y03ynumcn5" path="res://Characters/player.tscn" id="1_mh2fl"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Items/shopsign.gd" id="10_nsfmh"]
 [ext_resource type="Texture2D" uid="uid://c1gh5tvincpy4" path="res://Sprites/signPost.png" id="11_3q7e3"]
 [ext_resource type="PackedScene" uid="uid://clmc3c06mou67" path="res://Managers/item_boost_manager.tscn" id="12_f50uq"]
+[ext_resource type="PackedScene" uid="uid://74j6otae3ed" path="res://Joystick/joystick.tscn" id="13_3gyj5"]
 
 [node name="GrassyArea" type="Node2D"]
 
@@ -85,6 +86,11 @@ polygon = PackedVector2Array(3, -12, 6.6, -12, 16, -5.4, 16, -1, 13, 3, 9.3, 3, 
 
 [node name="Sprite2D" type="Sprite2D" parent="Shop Sign"]
 texture = ExtResource("11_3q7e3")
+
+[node name="Joystick" parent="." instance=ExtResource("13_3gyj5")]
+z_index = 9
+position = Vector2(41, 216)
+maxLength = 32
 
 [connection signal="trash_dropped" from="Enemy" to="Trash Manager" method="_on_trash_dropped"]
 [connection signal="dispose_trash" from="Trash Manager/Trashcan" to="Trash Manager" method="_on_dispose_trash"]

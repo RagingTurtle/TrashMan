@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var speed: float = 300.0
 
+@onready var joystick = $"../Joystick"
+
 var movement_disabled: bool = false
 
 func _physics_process(_delta):
@@ -23,4 +25,8 @@ func player_movement() -> void:
 	else:
 		velocity.y = move_toward(velocity.y, 0, speed)
 	
+	var joystick_direction = joystick.posVector
+	if joystick_direction:
+		velocity = joystick_direction * speed
+		
 	move_and_slide()
