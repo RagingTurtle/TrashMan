@@ -1,6 +1,7 @@
 extends Control
 
-
+var caller
 
 func _on_back_pressed() -> void:
-	pass # Replace with function body.
+	self.hide()
+	caller.show()

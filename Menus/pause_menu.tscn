@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm3ey7d18t4dl"]
+[gd_scene load_steps=5 format=3 uid="uid://bm3ey7d18t4dl"]
 
 [ext_resource type="Script" path="res://Menus/pause_menu.gd" id="1_k8tyn"]
 [ext_resource type="Shader" path="res://Menus/pause_menu.gdshader" id="2_ndyte"]
+[ext_resource type="PackedScene" uid="uid://cfs02u6snjey1" path="res://Menus/options_menu.tscn" id="3_pjtnq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cfe05"]
 shader = ExtResource("2_ndyte")
@@ -56,6 +57,10 @@ text = "Options"
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="Options Menu" parent="." instance=ExtResource("3_pjtnq")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
