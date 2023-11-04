@@ -9,8 +9,6 @@ var movement_disabled: bool = false
 func _physics_process(_delta):
 	if !movement_disabled:
 		player_movement()
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
 
 func player_movement() -> void:
 	var directionx: float = Input.get_axis("ui_left", "ui_right")

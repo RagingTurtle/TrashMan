@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://brc6f655taj1c"]
+[gd_scene load_steps=16 format=3 uid="uid://brc6f655taj1c"]
 
+[ext_resource type="Script" path="res://Areas/area.gd" id="1_7p0ja"]
 [ext_resource type="PackedScene" uid="uid://cg1yna7m25nqf" path="res://Managers/trash_manager.tscn" id="1_jb5tr"]
 [ext_resource type="PackedScene" uid="uid://cf5y03ynumcn5" path="res://Characters/player.tscn" id="1_mh2fl"]
 [ext_resource type="Texture2D" uid="uid://dargb3drmhcs" path="res://Sprites/Grass.png" id="2_h611g"]
@@ -13,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://c1gh5tvincpy4" path="res://Sprites/signPost.png" id="11_3q7e3"]
 [ext_resource type="PackedScene" uid="uid://clmc3c06mou67" path="res://Managers/item_boost_manager.tscn" id="12_f50uq"]
 [ext_resource type="PackedScene" uid="uid://74j6otae3ed" path="res://Joystick/joystick.tscn" id="13_3gyj5"]
+[ext_resource type="PackedScene" uid="uid://bm3ey7d18t4dl" path="res://Menus/pause_menu.tscn" id="15_exy5y"]
 
 [node name="GrassyArea" type="Node2D"]
+script = ExtResource("1_7p0ja")
 
 [node name="Grass" type="Control" parent="."]
 layout_mode = 3
@@ -88,9 +91,15 @@ polygon = PackedVector2Array(3, -12, 6.6, -12, 16, -5.4, 16, -1, 13, 3, 9.3, 3, 
 texture = ExtResource("11_3q7e3")
 
 [node name="Joystick" parent="." instance=ExtResource("13_3gyj5")]
-z_index = 9
 position = Vector2(41, 216)
 maxLength = 32
+
+[node name="PauseMenu" parent="." instance=ExtResource("15_exy5y")]
+visible = false
+offset_left = 240.0
+offset_top = 135.0
+offset_right = 240.0
+offset_bottom = 135.0
 
 [connection signal="trash_dropped" from="Enemy" to="Trash Manager" method="_on_trash_dropped"]
 [connection signal="dispose_trash" from="Trash Manager/Trashcan" to="Trash Manager" method="_on_dispose_trash"]

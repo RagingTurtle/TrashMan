@@ -4,3 +4,5 @@
 
 [node name="MainSoundTrack" type="AudioStreamPlayer"]
 stream = ExtResource("1_ouwah")
+autoplay = true
+bus = &"Music"
