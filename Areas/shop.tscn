@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0s2pqd6fjp3d"]
+[gd_scene load_steps=14 format=3 uid="uid://d0s2pqd6fjp3d"]
 
 [ext_resource type="Script" path="res://Areas/shop.gd" id="1_bmduc"]
 [ext_resource type="Texture2D" uid="uid://rk15wwhw0are" path="res://Sprites/shop/shop_background.png" id="1_brvwh"]
@@ -12,14 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://cteprl7lnqtdy" path="res://Sprites/shop/bag_focus.png" id="8_qcl06"]
 [ext_resource type="Texture2D" uid="uid://bexc38l1umdrm" path="res://Sprites/shop/energy_cans_focus.png" id="9_i6ck1"]
 [ext_resource type="Script" path="res://BBCode/bbcode_uppercase.gd" id="12_2wp11"]
-[ext_resource type="PackedScene" uid="uid://cjngg7k0w7xju" path="res://Managers/coin_manager.tscn" id="12_7fmn3"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_75nje"]
 script = ExtResource("12_2wp11")
 
 [node name="Shop" type="Control"]
 z_index = 10
-layout_direction = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,8 +118,6 @@ offset_bottom = 103.0
 theme_override_font_sizes/font_size = 9
 text = "BUY"
 icon_alignment = 1
-
-[node name="Coin Manager" parent="." instance=ExtResource("12_7fmn3")]
 
 [node name="ExitButton" type="Button" parent="."]
 layout_mode = 0

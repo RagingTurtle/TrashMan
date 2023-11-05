@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://brc6f655taj1c"]
+[gd_scene load_steps=17 format=3 uid="uid://brc6f655taj1c"]
 
 [ext_resource type="Script" path="res://Areas/area.gd" id="1_7p0ja"]
 [ext_resource type="PackedScene" uid="uid://cg1yna7m25nqf" path="res://Managers/trash_manager.tscn" id="1_jb5tr"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://clmc3c06mou67" path="res://Managers/item_boost_manager.tscn" id="12_f50uq"]
 [ext_resource type="PackedScene" uid="uid://74j6otae3ed" path="res://Joystick/joystick.tscn" id="13_3gyj5"]
 [ext_resource type="PackedScene" uid="uid://bm3ey7d18t4dl" path="res://Menus/pause_menu.tscn" id="15_exy5y"]
+[ext_resource type="PackedScene" uid="uid://d0s2pqd6fjp3d" path="res://Areas/shop.tscn" id="16_0wjns"]
 
 [node name="GrassyArea" type="Node2D"]
 script = ExtResource("1_7p0ja")
@@ -101,6 +102,14 @@ offset_top = 135.0
 offset_right = 240.0
 offset_bottom = 135.0
 
+[node name="Shop" parent="." node_paths=PackedStringArray("coin_manager", "player_body") instance=ExtResource("16_0wjns")]
+visible = false
+offset_right = 480.0
+offset_bottom = 270.0
+coin_manager = NodePath("../Coin Manager")
+player_body = NodePath("../Player")
+
 [connection signal="trash_dropped" from="Enemy" to="Trash Manager" method="_on_trash_dropped"]
 [connection signal="dispose_trash" from="Trash Manager/Trashcan" to="Trash Manager" method="_on_dispose_trash"]
 [connection signal="body_entered" from="Shop Sign" to="Shop Sign" method="_on_body_entered"]
+[connection signal="upgrade_stat" from="Shop" to="Item Boost Manager" method="_on_upgrade_stat"]

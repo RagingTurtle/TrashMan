@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Managers/item_boost_manager.gd" id="1_t23tw"]
 
-[node name="Stat Manager" type="Node"]
+[node name="Item Boost Manager" type="Node"]
 script = ExtResource("1_t23tw")

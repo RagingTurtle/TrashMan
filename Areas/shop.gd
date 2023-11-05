@@ -2,7 +2,8 @@ extends Control
 
 signal upgrade_stat
 
-@onready var coin_manager: Node2D = $"Coin Manager"
+@export var coin_manager: Node2D
+@export var player_body: Node2D
 
 enum Item {
 	TRASHCAN,
@@ -23,9 +24,7 @@ var item_cost: Dictionary = {
 	}
 	
 var selected_item: Item = Item.TRASHCAN
-var player_body: Node2D
-var main_scene_coin_manager: Node2D
-var main_scene: Node2D
+var old_coin_manager_z_index: int
 
 func _on_trashcan_pressed() -> void:
 	select_item(Item.TRASHCAN)
@@ -79,5 +78,5 @@ func _on_buy_button_pressed() -> void:
 	
 func _on_exit_button_pressed() -> void:
 	player_body.movement_disabled = false
-	main_scene_coin_manager.coin_amount = coin_manager.coin_amount
-	self.queue_free()
+	coin_manager.z_index = old_coin_manager_z_index
+	self.hide()
