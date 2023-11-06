@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://brc6f655taj1c"]
+[gd_scene load_steps=20 format=3 uid="uid://brc6f655taj1c"]
 
 [ext_resource type="Script" path="res://Areas/area.gd" id="1_7p0ja"]
 [ext_resource type="PackedScene" uid="uid://cg1yna7m25nqf" path="res://Managers/trash_manager.tscn" id="1_jb5tr"]
@@ -12,8 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://c6bnc5pjcfexq" path="res://Sprites/bag_full.png" id="8_o73xh"]
 [ext_resource type="Script" path="res://Items/shopsign.gd" id="10_nsfmh"]
 [ext_resource type="Texture2D" uid="uid://c1gh5tvincpy4" path="res://Sprites/signPost.png" id="11_3q7e3"]
+[ext_resource type="Texture2D" uid="uid://bo0bn5yxwxh27" path="res://Sprites/trash_cup.png" id="11_apkav"]
 [ext_resource type="PackedScene" uid="uid://clmc3c06mou67" path="res://Managers/item_boost_manager.tscn" id="12_f50uq"]
+[ext_resource type="Texture2D" uid="uid://b5c44jupddij5" path="res://Sprites/trash_apple.png" id="12_mi105"]
 [ext_resource type="PackedScene" uid="uid://74j6otae3ed" path="res://Joystick/joystick.tscn" id="13_3gyj5"]
+[ext_resource type="Texture2D" uid="uid://dd6udeaifjjvi" path="res://Sprites/trash_can.png" id="13_bcrup"]
 [ext_resource type="PackedScene" uid="uid://bm3ey7d18t4dl" path="res://Menus/pause_menu.tscn" id="15_exy5y"]
 [ext_resource type="PackedScene" uid="uid://d0s2pqd6fjp3d" path="res://Areas/shop.tscn" id="16_0wjns"]
 
@@ -77,6 +80,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Trash Manager" parent="." node_paths=PackedStringArray("bag") instance=ExtResource("1_jb5tr")]
 bag = NodePath("../Player/Bag")
+trash_texture_list = Array[Texture2D]([ExtResource("11_apkav"), ExtResource("12_mi105"), ExtResource("13_bcrup")])
 
 [node name="Trashcan" parent="Trash Manager" instance=ExtResource("6_nr74n")]
 position = Vector2(152, 96)

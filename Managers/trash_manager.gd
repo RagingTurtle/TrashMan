@@ -5,6 +5,7 @@ extends Node2D
 @export var trash_scene: PackedScene
 @export var max_bag_capacity: int = 3
 @export var bag: TextureProgressBar
+@export var trash_texture_list : Array[Texture2D] = []
 
 @onready var available_trash: Node = $"Available Trash"
 @onready var on_field: Node = $"Used Trash/On Field"
@@ -50,6 +51,7 @@ func _on_dispose_trash() -> void:
 func _on_trash_dropped(location: Vector2) -> void:
 	if available_trash.get_child_count() > 0:
 		var dropped: Area2D = available_trash.get_child(0)
+		change_sprite(dropped)
 		dropped.call_deferred("reparent", on_field)
 		dropped.global_position = location
 		dropped.visible = true
@@ -67,3 +69,5 @@ func bag_full_animation() -> void:
 	pulse_size_tween.tween_property(bag, "scale", bag_scale * bag_grow_amount, tween_duration).from(bag_scale)
 	pulse_size_tween.tween_property(bag, "scale", bag_scale, tween_duration).from(bag_scale * bag_grow_amount)
 	
+func change_sprite(trash_piece: Area2D) -> void:
+	trash_piece.sprite.texture = trash_texture_list.pick_random()
