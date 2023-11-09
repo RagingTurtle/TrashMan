@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://xdo2j3gtlgav"]
+[gd_scene load_steps=9 format=3 uid="uid://xdo2j3gtlgav"]
 
 [ext_resource type="Script" path="res://Menus/title_menu.gd" id="1_08aeo"]
 [ext_resource type="Texture2D" uid="uid://bifqyi3wm5643" path="res://Sprites/TrashMan.png" id="2_41rr3"]
 [ext_resource type="Texture2D" uid="uid://cg6v6efjxjpty" path="res://Sprites/trashcan.png" id="3_3kej3"]
 [ext_resource type="Texture2D" uid="uid://bsv2bk6kt86ex" path="res://Sprites/title.png" id="4_chkpn"]
+[ext_resource type="Theme" uid="uid://dpdk4op25jubo" path="res://Menus/default_theme.tres" id="5_kdlgo"]
 [ext_resource type="FontFile" uid="uid://cqsvwr0rmlcn0" path="res://Fonts/TrashMan.ttf" id="5_nqsgw"]
 [ext_resource type="PackedScene" uid="uid://cfs02u6snjey1" path="res://Menus/options_menu.tscn" id="7_xmwgh"]
+[ext_resource type="PackedScene" uid="uid://ckd8e3geswbm0" path="res://Menus/credits.tscn" id="8_5733p"]
 
 [node name="Title Menu" type="Control"]
 layout_mode = 3
@@ -44,9 +46,9 @@ texture = ExtResource("4_chkpn")
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_left = 179.0
-offset_top = 126.0
-offset_right = 221.0
-offset_bottom = 192.0
+offset_top = 114.0
+offset_right = 244.0
+offset_bottom = 222.0
 scale = Vector2(2.28469, 1.30087)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
@@ -54,23 +56,35 @@ layout_mode = 2
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_kdlgo")
 theme_override_fonts/font = ExtResource("5_nqsgw")
 text = "Play"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_nqsgw")
+theme = ExtResource("5_kdlgo")
 text = "Options"
+
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_kdlgo")
+text = "Credits
+"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_nqsgw")
+theme = ExtResource("5_kdlgo")
 text = "Quit"
 
 [node name="Options Menu" parent="." instance=ExtResource("7_xmwgh")]
 visible = false
 layout_mode = 1
 
+[node name="credits" parent="." instance=ExtResource("8_5733p")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

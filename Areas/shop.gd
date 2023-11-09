@@ -2,7 +2,7 @@ extends Control
 
 signal upgrade_stat
 
-@export var coin_manager: Node2D
+@export var coin_manager: Control
 @export var player_body: Node2D
 
 enum Item {

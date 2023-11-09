@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjngg7k0w7xju"]
+[gd_scene load_steps=6 format=3 uid="uid://cjngg7k0w7xju"]
 
 [ext_resource type="Texture2D" uid="uid://ibhpwc18v4yo" path="res://Sprites/trashCoin-sheet.png" id="1_5dslj"]
 [ext_resource type="FontFile" uid="uid://cqsvwr0rmlcn0" path="res://Fonts/TrashMan.ttf" id="2_yh52j"]
 
 [sub_resource type="GDScript" id="GDScript_scle8"]
-script/source = "extends Node2D
+script/source = "extends Control
 
 signal coin_amount_changed()
 
@@ -23,6 +23,13 @@ func _on_coin_amount_changed() -> void:
 	$\"Coin Display/Coin Counter\".text = str(coin_amount)
 "
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugskv"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 0.588235)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [sub_resource type="LabelSettings" id="LabelSettings_uvd5p"]
 font = ExtResource("2_yh52j")
 font_size = 20
@@ -31,15 +38,16 @@ outline_color = Color(0.109804, 0.109804, 0.109804, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.815686)
 
-[node name="Coin Manager" type="Node2D"]
+[node name="Coin Manager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = SubResource("GDScript_scle8")
 
-[node name="Coin Display" type="ColorRect" parent="."]
-offset_left = 15.0
-offset_top = 1.0
-offset_right = 111.0
-offset_bottom = 33.0
-color = Color(0.156863, 0.156863, 0.156863, 0.588235)
+[node name="Coin Display" type="Panel" parent="."]
+layout_mode = 1
+offset_right = 96.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ugskv")
 
 [node name="Coin" type="Sprite2D" parent="Coin Display"]
 texture = ExtResource("1_5dslj")

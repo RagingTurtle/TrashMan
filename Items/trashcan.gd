@@ -10,6 +10,7 @@ func _process(_delta: float) -> void:
 	if is_player_in_area and wait_timer.is_stopped() and in_bag.get_child_count() > 0:
 		emit_signal("dispose_trash")
 		wait_timer_animation(wait_timer.wait_time)
+		print(wait_timer.wait_time)
 		wait_timer.start()
 
 func _on_body_entered(body: Node2D) -> void:

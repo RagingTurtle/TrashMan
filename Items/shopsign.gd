@@ -1,7 +1,7 @@
 extends Area2D
 
-@onready var shop: Control = $"../Shop"
-@onready var coin_manager: Node2D = $"../Coin Manager"
+@onready var shop: Control = $"../UI/Shop"
+@onready var coin_manager: Control = $"../UI/Coin Manager"
 
 func _on_body_entered(body: Node2D) -> void:
 	if (body.name) == "Player":

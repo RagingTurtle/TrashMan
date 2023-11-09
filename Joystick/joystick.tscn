@@ -5,8 +5,10 @@
 [ext_resource type="Script" path="res://Joystick/knob.gd" id="3_u32iy"]
 [ext_resource type="Texture2D" uid="uid://l514k0miwbg2" path="res://Sprites/joystick_ring.png" id="4_urneg"]
 
-[node name="Joystick" type="Node2D"]
+[node name="Joystick" type="Control"]
 z_index = 9
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_2jdg6")
 
 [node name="Ring" type="Sprite2D" parent="."]
@@ -19,6 +21,7 @@ script = ExtResource("3_u32iy")
 
 [node name="Button" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = -25.0
 offset_top = -25.0
 offset_right = 25.0

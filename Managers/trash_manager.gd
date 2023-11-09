@@ -11,7 +11,7 @@ extends Node2D
 @onready var on_field: Node = $"Used Trash/On Field"
 @onready var in_bag: Node = $"Used Trash/In Bag"
 @onready var trashcan: Area2D = $Trashcan
-@onready var coin_manager: Node2D = $"../Coin Manager"
+@onready var coin_manager: Control = $"../UI/Coin Manager"
 @onready var bag_scale: Vector2 = bag.scale
 
 var coin = preload("res://Items/coin.tscn")

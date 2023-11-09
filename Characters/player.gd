@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed: float = 300.0
 
-@onready var joystick = $"../Joystick"
+@onready var joystick: Control = $"../UI/Joystick"
 
 var movement_disabled: bool = false
 
