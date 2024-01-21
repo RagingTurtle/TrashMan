@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4cy5fwtc0kin"]
+
+[ext_resource type="Theme" uid="uid://dpdk4op25jubo" path="res://default_theme.tres" id="1_c1w2q"]
+[ext_resource type="Script" path="res://scripts/base_screen.gd" id="2_46p83"]
+[ext_resource type="FontFile" uid="uid://cqsvwr0rmlcn0" path="res://Fonts/TrashMan.ttf" id="3_afpy5"]
+[ext_resource type="PackedScene" uid="uid://dfli0rqojemyx" path="res://Menus/volume_slider.tscn" id="4_c7tae"]
+[ext_resource type="PackedScene" uid="uid://d0kxb0dr5j351" path="res://scenes/screen_button.tscn" id="5_nisja"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3erho"]
+font = ExtResource("3_afpy5")
+
+[node name="OptionsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_c1w2q")
+script = ExtResource("2_46p83")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -25.5
+offset_right = 22.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_3erho")
+
+[node name="volume_slider" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_c7tae")]
+layout_mode = 2
+value = 0.41
+
+[node name="CreditsBack" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_nisja")]
+layout_mode = 2
+text = "Back"

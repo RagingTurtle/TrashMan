@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://knlkjbrx4tka"]
+[gd_scene load_steps=5 format=3 uid="uid://knlkjbrx4tka"]
 
 [ext_resource type="Script" path="res://scripts/screens.gd" id="1_7igcs"]
 [ext_resource type="PackedScene" uid="uid://du675e7o3gx1v" path="res://scenes/screens/title_screen.tscn" id="2_examq"]
 [ext_resource type="PackedScene" uid="uid://ic2tklcxisag" path="res://scenes/screens/credits_screen.tscn" id="3_k1j3n"]
+[ext_resource type="PackedScene" uid="uid://c4cy5fwtc0kin" path="res://scenes/screens/options_screen.tscn" id="4_iuu1i"]
 
 [node name="Screens" type="CanvasLayer"]
 script = ExtResource("1_7igcs")
@@ -10,3 +11,5 @@ script = ExtResource("1_7igcs")
 [node name="TitleScreen" parent="." instance=ExtResource("2_examq")]
 
 [node name="CreditsScreen" parent="." instance=ExtResource("3_k1j3n")]
+
+[node name="OptionsScreen" parent="." instance=ExtResource("4_iuu1i")]

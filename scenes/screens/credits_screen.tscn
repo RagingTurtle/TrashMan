@@ -44,16 +44,6 @@ text = "[center]
 fit_content = true
 scroll_active = false
 
-[node name="Back" type="Button" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
 [node name="CreditsBack" parent="." instance=ExtResource("3_n23o3")]
 layout_mode = 1
 anchors_preset = 15
@@ -64,5 +54,3 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 text = ""
-
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
