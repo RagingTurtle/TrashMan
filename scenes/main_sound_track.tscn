@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://dud3eev31tdqj"]
 
-[ext_resource type="AudioStream" uid="uid://b3176ilrvl3um" path="res://Audio/MainSoundTrack.wav" id="1_ouwah"]
+[ext_resource type="AudioStream" uid="uid://b3176ilrvl3um" path="res://Audio/MainSoundTrack.wav" id="1_fre61"]
 
 [node name="MainSoundTrack" type="AudioStreamPlayer"]
-stream = ExtResource("1_ouwah")
+stream = ExtResource("1_fre61")
 autoplay = true
 bus = &"Music"
