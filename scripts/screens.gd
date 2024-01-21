@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal start_game
+
 @onready var title_screen: Screen = $TitleScreen
 @onready var credits_screen: Screen = $CreditsScreen
 @onready var options_screen: Control = $OptionsScreen
@@ -22,7 +24,8 @@ func register_buttons() -> void:
 func _on_button_pressed(button: Node) -> void:
 	match button.name:
 		"TitlePlay":
-			print(button.name)
+			change_screen(null, false)
+			start_game.emit()
 		"TitleOptions":
 			change_screen(options_screen, true)
 		"TitleCredits":

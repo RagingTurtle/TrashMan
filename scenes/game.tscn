@@ -1,6 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://xjpdjj7anmy8"]
+[gd_scene load_steps=3 format=3 uid="uid://xjpdjj7anmy8"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_4w5o2"]
+[ext_resource type="PackedScene" uid="uid://74j6otae3ed" path="res://scenes/joystick_ui.tscn" id="2_kdwkk"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_4w5o2")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Joystick" parent="UILayer/HUD" instance=ExtResource("2_kdwkk")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = -100.0
+grow_vertical = 0

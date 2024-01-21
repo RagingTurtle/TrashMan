@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://7v4nxlkj36mm"]
 
-[ext_resource type="Script" path="res://Characters/enemy.gd" id="1_tdnqk"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_tdnqk"]
 [ext_resource type="Texture2D" uid="uid://cg314h7hjse2e" path="res://Sprites/trashy.png" id="2_2f0f4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vg6my"]

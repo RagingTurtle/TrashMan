@@ -1,8 +1,9 @@
 extends CharacterBody2D
+class_name Player
 
 @export var speed: float = 300.0
 
-@onready var joystick: Control = $"../UI/Joystick"
+var joystick: Joystick = null
 
 var movement_disabled: bool = false
 
@@ -23,8 +24,9 @@ func player_movement() -> void:
 	else:
 		velocity.y = move_toward(velocity.y, 0, speed)
 	
-	var joystick_direction = joystick.posVector
-	if joystick_direction:
-		velocity = joystick_direction * speed
+	if joystick:
+		var joystick_direction: Vector2 = joystick.posVector
+		if joystick_direction:
+			velocity = joystick_direction * speed
 		
 	move_and_slide()
