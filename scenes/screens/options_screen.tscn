@@ -20,33 +20,6 @@ grow_vertical = 2
 theme = ExtResource("1_c1w2q")
 script = ExtResource("2_46p83")
 
-[node name="volume_slider" type="HSlider" parent="."]
-layout_mode = 2
-offset_left = 392.5
-offset_top = 232.0
-offset_right = 567.5
-offset_bottom = 248.0
-theme = ExtResource("1_c1w2q")
-max_value = 1.0
-step = 0.001
-value = 0.41
-script = ExtResource("3_nyrvs")
-
-[node name="Label" type="Label" parent="volume_slider"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -87.5
-offset_top = -54.0
-offset_right = 87.5
-grow_horizontal = 2
-grow_vertical = 0
-text = "Volume"
-label_settings = SubResource("LabelSettings_3erho")
-
 [node name="CreditsBack" parent="." instance=ExtResource("5_nisja")]
 layout_mode = 1
 anchors_preset = 7
@@ -61,3 +34,36 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Back"
+
+[node name="LabelVolume" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.5
+offset_top = -27.0
+offset_right = 87.5
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_3erho")
+
+[node name="volume_slider" type="HSlider" parent="LabelVolume"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -4.0
+offset_right = 100.0
+offset_bottom = 21.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+theme = ExtResource("1_c1w2q")
+max_value = 1.0
+step = 0.001
+value = 0.41
+script = ExtResource("3_nyrvs")
