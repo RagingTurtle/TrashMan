@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://du675e7o3gx1v"]
+
+[ext_resource type="Script" path="res://scripts/base_screen.gd" id="1_5yk6p"]
+[ext_resource type="Texture2D" uid="uid://bifqyi3wm5643" path="res://Sprites/TrashMan.png" id="2_x0bw4"]
+[ext_resource type="Texture2D" uid="uid://cg6v6efjxjpty" path="res://Sprites/trashcan.png" id="3_1wgdj"]
+[ext_resource type="Texture2D" uid="uid://bsv2bk6kt86ex" path="res://Sprites/title.png" id="4_f8r7e"]
+[ext_resource type="PackedScene" uid="uid://d0kxb0dr5j351" path="res://scenes/screen_button.tscn" id="7_6gmsg"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5yk6p")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TrashMan" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 85.0
+offset_top = 19.0
+offset_right = 134.0
+offset_bottom = 73.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(9.87871, 9.87871)
+texture = ExtResource("2_x0bw4")
+expand_mode = 1
+
+[node name="TrashCan" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -597.0
+offset_right = -540.0
+offset_bottom = 64.0
+grow_vertical = 0
+scale = Vector2(8.30242, 8.30242)
+texture = ExtResource("3_1wgdj")
+
+[node name="Title" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -346.0
+offset_top = -270.0
+offset_right = 287.0
+offset_bottom = 168.0
+grow_horizontal = 2
+texture = ExtResource("4_f8r7e")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 208.0
+offset_bottom = 250.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="TitlePlay" parent="Control/MarginContainer/VBoxContainer" instance=ExtResource("7_6gmsg")]
+layout_mode = 2
+text = "Play"
+
+[node name="TitleOptions" parent="Control/MarginContainer/VBoxContainer" instance=ExtResource("7_6gmsg")]
+layout_mode = 2
+text = "Options"
+
+[node name="TitleCredits" parent="Control/MarginContainer/VBoxContainer" instance=ExtResource("7_6gmsg")]
+layout_mode = 2
+text = "Credits"
+
+[node name="TitleQuit" parent="Control/MarginContainer/VBoxContainer" instance=ExtResource("7_6gmsg")]
+layout_mode = 2
+text = "Quit"
