@@ -11,17 +11,23 @@ config_version=5
 [application]
 
 config/name="TrashMan"
-run/main_scene="res://Managers/scene_manager.tscn"
+run/main_scene="res://scenes/screens/title_screen.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
+[debug]
+
+gdscript/warnings/unsafe_property_access=2
+gdscript/warnings/unsafe_method_access=2
+gdscript/warnings/unsafe_cast=1
+gdscript/warnings/unsafe_call_argument=2
+
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=270
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/viewport_width=960
+window/size/viewport_height=540
 window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 
 [input]
 

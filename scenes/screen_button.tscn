@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0kxb0dr5j351"]
+
+[ext_resource type="Theme" uid="uid://dpdk4op25jubo" path="res://default_theme.tres" id="1_nbvt5"]
+[ext_resource type="Script" path="res://scripts/screen_button.gd" id="3_tlr0c"]
+
+[node name="ScreenButton" type="Button" groups=["buttons"]]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("1_nbvt5")
+text = "Button Text"
+script = ExtResource("3_tlr0c")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
