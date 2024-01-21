@@ -4,5 +4,4 @@
 
 [node name="MainSoundTrack" type="AudioStreamPlayer"]
 stream = ExtResource("1_fre61")
-autoplay = true
 bus = &"Music"

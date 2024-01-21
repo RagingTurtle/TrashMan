@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://d33s25eadk2ga"]
+
+[ext_resource type="Script" path="res://scripts/base_screen.gd" id="1_jd7b2"]
+[ext_resource type="Shader" path="res://shaders/pause_menu.gdshader" id="2_ebieu"]
+[ext_resource type="PackedScene" uid="uid://d0kxb0dr5j351" path="res://scenes/screen_button.tscn" id="3_m1r4r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p6exs"]
+shader = ExtResource("2_ebieu")
+shader_parameter/amount = 2.684
+
+[node name="PauseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jd7b2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_p6exs")
+layout_mode = 0
+offset_left = -1590.0
+offset_top = -874.0
+offset_right = -1550.0
+offset_bottom = -834.0
+scale = Vector2(65.0054, 36.5533)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -50.5
+offset_right = 35.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PauseResume" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_m1r4r")]
+layout_mode = 2
+text = "Resume
+"
+
+[node name="PauseOptions" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_m1r4r")]
+layout_mode = 2
+text = "Options"
+
+[node name="PauseQuit" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_m1r4r")]
+layout_mode = 2
+text = "Quit"
