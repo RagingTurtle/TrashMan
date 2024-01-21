@@ -1,16 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckd8e3geswbm0"]
+[gd_scene load_steps=4 format=3 uid="uid://ic2tklcxisag"]
 
-[ext_resource type="Script" path="res://Menus/options_menu.gd" id="1_36x5c"]
-[ext_resource type="Theme" uid="uid://dpdk4op25jubo" path="res://default_theme.tres" id="2_qyknd"]
+[ext_resource type="Script" path="res://scripts/base_screen.gd" id="1_bhcvn"]
+[ext_resource type="Theme" uid="uid://dpdk4op25jubo" path="res://default_theme.tres" id="2_4r1st"]
+[ext_resource type="PackedScene" uid="uid://d0kxb0dr5j351" path="res://scenes/screen_button.tscn" id="3_n23o3"]
 
-[node name="credits" type="Control"]
+[node name="CreditsScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_36x5c")
+script = ExtResource("1_bhcvn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -29,7 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_qyknd")
+theme = ExtResource("2_4r1st")
 bbcode_enabled = true
 text = "[center]
 [font size=20][u]CREDITS[/u]
@@ -44,6 +45,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Back" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,5 +53,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
+
+[node name="CreditsBack" parent="." instance=ExtResource("3_n23o3")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+text = ""
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

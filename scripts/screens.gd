@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var title_screen: Screen = $TitleScreen
+@onready var credits_screen: Screen = $CreditsScreen
 
 var active_screen: Screen = null
 
@@ -22,9 +23,11 @@ func _on_button_pressed(button: Node) -> void:
 		"TitleOptions":
 			print(button.name)
 		"TitleCredits":
-			print(button.name)
+			change_screen(credits_screen)
 		"TitleQuit":
-			print(button.name)
+			get_tree().quit()
+		"CreditsBack":
+			change_screen(title_screen)
 
 				
 func change_screen(new_screen: Screen) -> void:
