@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 
 @export var speed: float = 300.0
 @export var walk_timer_delay: float = 1
@@ -34,4 +35,4 @@ func _change_walk_direction():
 	walk_timer.start()
 	
 func drop_trash():
-	emit_signal("trash_dropped", global_position)
+	trash_dropped.emit(global_position)

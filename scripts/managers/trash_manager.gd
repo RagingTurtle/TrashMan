@@ -14,6 +14,8 @@ extends Node2D
 
 var bag: TextureProgressBar = null
 var bag_scale: Vector2
+var trash_spawner: Enemy = null
+
 func _ready() -> void:
 	initialize_trash_pool()
 
@@ -44,7 +46,7 @@ func _on_pick_up_trash(trash_piece: Area2D) -> void:
 #		trash_piece.call_deferred("reparent", available_trash)
 #		coin_manager.coin_amount += 1
 
-func _on_trash_dropped(location: Vector2) -> void:
+func spawn_trash(location: Vector2) -> void:
 	if trash_pool.get_child_count() > 0:
 		var dropped: Area2D = trash_pool.get_child(0)
 		change_sprite(dropped)
