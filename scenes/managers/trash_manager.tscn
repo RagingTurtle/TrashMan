@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg1yna7m25nqf"]
+
+[ext_resource type="Script" path="res://scripts/managers/trash_manager.gd" id="1_4avp6"]
+
+[node name="Trash Manager" type="Node2D"]
+script = ExtResource("1_4avp6")
+
+[node name="TrashPool" type="Node" parent="."]
+
+[node name="Used Trash" type="Node" parent="."]
+
+[node name="On Field" type="Node" parent="Used Trash"]
+
+[node name="In Bag" type="Node" parent="Used Trash"]

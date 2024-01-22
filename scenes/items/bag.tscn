@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dchxobnk5suc6"]
+
+[ext_resource type="Texture2D" uid="uid://72p8lqnqd4yn" path="res://Sprites/bag_white.png" id="1_65kbi"]
+[ext_resource type="Texture2D" uid="uid://c6bnc5pjcfexq" path="res://Sprites/bag_full.png" id="2_soxv6"]
+[ext_resource type="Script" path="res://scripts/items/Bag.gd" id="3_s7nal"]
+
+[node name="Bag" type="TextureProgressBar"]
+offset_left = -34.0
+offset_top = -10.0
+offset_right = 6.0
+offset_bottom = 30.0
+scale = Vector2(0.519467, 0.641669)
+pivot_offset = Vector2(21.92, 6.975)
+max_value = 3.0
+step = 0.01
+value = 2.5
+fill_mode = 3
+texture_under = ExtResource("1_65kbi")
+texture_progress = ExtResource("2_soxv6")
+script = ExtResource("3_s7nal")
+metadata/_edit_use_anchors_ = true

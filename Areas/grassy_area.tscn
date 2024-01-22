@@ -1,40 +1,25 @@
-[gd_scene load_steps=22 format=3 uid="uid://brc6f655taj1c"]
+[gd_scene load_steps=20 format=3 uid="uid://brc6f655taj1c"]
 
-[ext_resource type="PackedScene" uid="uid://cg1yna7m25nqf" path="res://Managers/trash_manager.tscn" id="1_jb5tr"]
-[ext_resource type="PackedScene" uid="uid://cf5y03ynumcn5" path="res://Characters/player.tscn" id="1_mh2fl"]
-[ext_resource type="Texture2D" uid="uid://dargb3drmhcs" path="res://Sprites/Grass.png" id="2_h611g"]
+[ext_resource type="PackedScene" uid="uid://cg1yna7m25nqf" path="res://scenes/managers/trash_manager.tscn" id="1_jb5tr"]
+[ext_resource type="PackedScene" uid="uid://cf5y03ynumcn5" path="res://scenes/characters/player.tscn" id="1_mh2fl"]
 [ext_resource type="PackedScene" uid="uid://bw6xp1y48e1fe" path="res://Areas/tile_map.tscn" id="2_ssqmf"]
-[ext_resource type="PackedScene" uid="uid://7v4nxlkj36mm" path="res://Characters/enemy.tscn" id="4_1wdlt"]
-[ext_resource type="PackedScene" uid="uid://cb80ddq5vyy3w" path="res://Items/trashcan.tscn" id="6_nr74n"]
+[ext_resource type="PackedScene" uid="uid://7v4nxlkj36mm" path="res://scenes/characters/enemy.tscn" id="4_1wdlt"]
+[ext_resource type="PackedScene" uid="uid://cb80ddq5vyy3w" path="res://scenes/items/trashcan.tscn" id="6_nr74n"]
 [ext_resource type="Texture2D" uid="uid://72p8lqnqd4yn" path="res://Sprites/bag_white.png" id="7_20fax"]
-[ext_resource type="PackedScene" uid="uid://cjngg7k0w7xju" path="res://Managers/coin_manager.tscn" id="7_j78q6"]
-[ext_resource type="Script" path="res://Menus/ui.gd" id="7_wfr66"]
+[ext_resource type="PackedScene" uid="uid://cjngg7k0w7xju" path="res://scenes/managers/coin_manager.tscn" id="7_j78q6"]
+[ext_resource type="Script" path="res://temp/temp.gd" id="7_wfr66"]
 [ext_resource type="Texture2D" uid="uid://c6bnc5pjcfexq" path="res://Sprites/bag_full.png" id="8_o73xh"]
 [ext_resource type="Script" path="res://Items/shopsign.gd" id="10_nsfmh"]
 [ext_resource type="Texture2D" uid="uid://c1gh5tvincpy4" path="res://Sprites/signPost.png" id="11_3q7e3"]
 [ext_resource type="Texture2D" uid="uid://bo0bn5yxwxh27" path="res://Sprites/trash_cup.png" id="11_apkav"]
-[ext_resource type="PackedScene" uid="uid://clmc3c06mou67" path="res://Managers/item_boost_manager.tscn" id="12_f50uq"]
+[ext_resource type="PackedScene" uid="uid://clmc3c06mou67" path="res://scenes/managers/item_boost_manager.tscn" id="12_f50uq"]
 [ext_resource type="Texture2D" uid="uid://b5c44jupddij5" path="res://Sprites/trash_apple.png" id="12_mi105"]
-[ext_resource type="PackedScene" uid="uid://74j6otae3ed" path="res://Joystick/joystick.tscn" id="13_3gyj5"]
+[ext_resource type="PackedScene" uid="uid://74j6otae3ed" path="res://scenes/joystick_ui.tscn" id="13_3gyj5"]
 [ext_resource type="Texture2D" uid="uid://dd6udeaifjjvi" path="res://Sprites/trash_can.png" id="13_bcrup"]
-[ext_resource type="PackedScene" uid="uid://bm3ey7d18t4dl" path="res://Menus/pause_menu.tscn" id="15_exy5y"]
+[ext_resource type="PackedScene" uid="uid://d3uhq320f03js" path="res://temp/temp.tscn" id="15_exy5y"]
 [ext_resource type="PackedScene" uid="uid://d0s2pqd6fjp3d" path="res://Areas/shop.tscn" id="16_0wjns"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p4gql"]
-texture = ExtResource("2_h611g")
-texture_region_size = Vector2i(32, 32)
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-1:2/0 = 0
-0:0/0 = 0
-1:0/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-2:2/0 = 0
-
 [sub_resource type="TileSet" id="TileSet_t4ene"]
-sources/0 = SubResource("TileSetAtlasSource_p4gql")
 
 [node name="GrassyArea" type="Node2D"]
 
@@ -43,11 +28,6 @@ script = ExtResource("7_wfr66")
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("15_exy5y")]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 
 [node name="Shop" parent="UI" node_paths=PackedStringArray("coin_manager", "player_body") instance=ExtResource("16_0wjns")]
 visible = false
@@ -95,7 +75,7 @@ position = Vector2(366, 198)
 [node name="Player" parent="." instance=ExtResource("1_mh2fl")]
 position = Vector2(45, 55)
 
-[node name="Bag" type="TextureProgressBar" parent="Player"]
+[node name="Bag2" type="TextureProgressBar" parent="Player"]
 offset_left = -34.0
 offset_top = -10.0
 offset_right = 6.0
@@ -110,7 +90,7 @@ texture_under = ExtResource("7_20fax")
 texture_progress = ExtResource("8_o73xh")
 metadata/_edit_use_anchors_ = true
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D2" type="Camera2D" parent="Player"]
 limit_left = 0
 limit_top = 0
 limit_right = 1283
@@ -118,9 +98,9 @@ limit_bottom = 700
 
 [node name="Item Boost Manager" parent="." instance=ExtResource("12_f50uq")]
 
-[node name="Trash Manager" parent="." node_paths=PackedStringArray("bag") instance=ExtResource("1_jb5tr")]
-bag = NodePath("../Player/Bag")
+[node name="Trash Manager" parent="." instance=ExtResource("1_jb5tr")]
 trash_texture_list = Array[Texture2D]([ExtResource("11_apkav"), ExtResource("12_mi105"), ExtResource("13_bcrup")])
+bag = null
 
 [node name="Trashcan" parent="Trash Manager" instance=ExtResource("6_nr74n")]
 position = Vector2(152, 96)

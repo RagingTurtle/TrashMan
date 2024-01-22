@@ -12,13 +12,13 @@ func _physics_process(_delta):
 		player_movement()
 
 func player_movement() -> void:
-	var directionx: float = Input.get_axis("ui_left", "ui_right")
+	var directionx: float = Input.get_axis("move_left", "move_right")
 	if directionx:
 		velocity.x = directionx * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
-	var directiony: float = Input.get_axis("ui_up", "ui_down")
+	var directiony: float = Input.get_axis("move_up", "move_down")
 	if directiony:
 		velocity.y = directiony * speed
 	else:
