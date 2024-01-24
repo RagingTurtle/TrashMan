@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dd0tvlitnrm2k"]
 
 [ext_resource type="Texture2D" uid="uid://ibhpwc18v4yo" path="res://Sprites/trashCoin-sheet.png" id="1_2jq0o"]
-[ext_resource type="Script" path="res://Items/coin.gd" id="2_ke37c"]
+[ext_resource type="Script" path="res://scripts/items/coin.gd" id="2_ke37c"]
 
 [node name="Coin" type="Sprite2D"]
 texture = ExtResource("1_2jq0o")

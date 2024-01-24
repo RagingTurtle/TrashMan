@@ -6,13 +6,18 @@ extends Node2D
 @onready var fence_tile_map: TileMap = $TileMaps/FenceTileMap
 @onready var trash_manager: Node2D = $"Trash Manager"
 
+var trashcan_scene: PackedScene = preload("res://scenes/items/trashcan.tscn")
 var enemy_scene: PackedScene = preload("res://scenes/characters/enemy.tscn")
 var player_scene: PackedScene = preload("res://scenes/Characters/player.tscn")
 var bag_scene: PackedScene = preload("res://scenes/items/bag.tscn")
+var coin_scene: PackedScene = preload("res://scenes/items/coin.tscn")
+
 var player: Player = null
 var player_spawn_position: Vector2
 var enemy: Enemy = null
 var enemy_spawn_position: Vector2
+var trashcan: Trashcan = null
+var trashcan_spawn_position: Vector2
 
 func  _ready() -> void:
 	hud.visible = false
@@ -40,5 +45,22 @@ func start_game() -> void:
 	add_child(enemy)
 	enemy.trash_dropped.connect(_on_enemy_trash_drop)
 	
+	trashcan = trashcan_scene.instantiate()
+	trashcan_spawn_position.x = viewport_size.x / 2
+	var trashcan_spawn_position_y_offset:float = 0
+	trashcan_spawn_position.y = viewport_size.y / 2  - trashcan_spawn_position_y_offset
+	trashcan.global_position = trashcan_spawn_position
+	add_child(trashcan)
+	trashcan.dispose_trash.connect(_on_trashcan_dispose_trash)
+	
 func _on_enemy_trash_drop(trash_position:Vector2):
 	trash_manager.spawn_trash(trash_position)
+	
+func _on_trashcan_dispose_trash():
+	var success = trash_manager.dispose_trash()
+	if success:
+		trashcan.wait_timer_animation(trashcan.wait_timer.wait_time)
+		var coin_animation:  = coin_scene.instantiate()
+		trashcan.add_child(coin_animation)
+		#coin_manager.coin_amount += 1
+

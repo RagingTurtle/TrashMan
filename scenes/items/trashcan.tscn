@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cg6v6efjxjpty" path="res://Sprites/trashcan.png" id="1_fdhsv"]
 
 [node name="Trashcan" type="Area2D"]
+scale = Vector2(2, 2)
 collision_layer = 16
 script = ExtResource("1_8s34e")
 

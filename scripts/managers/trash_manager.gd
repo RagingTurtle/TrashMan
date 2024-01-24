@@ -10,7 +10,6 @@ extends Node2D
 @onready var in_bag: Node = $"Used Trash/In Bag"
 
 @onready var trash_scene: PackedScene = preload("res://scenes/items/trash_piece.tscn")
-@onready var coin = preload("res://Items/coin.tscn")
 
 var bag: TextureProgressBar = null
 var bag_scale: Vector2
@@ -37,14 +36,13 @@ func _on_pick_up_trash(trash_piece: Area2D) -> void:
 	else:
 		bag_full_animation()
 	
-#func _on_dispose_trash() -> void:
-#	if in_bag.get_child_count() > 0:
-#		var trash_piece: Area2D = in_bag.get_child(0)
-#		var coin_animation = coin.instantiate()
-#		#coin_animation.get_node("Coin").global_position = trashcan.global_position
-#		trashcan.add_child(coin_animation)
-#		trash_piece.call_deferred("reparent", available_trash)
-#		coin_manager.coin_amount += 1
+func dispose_trash() -> bool:
+	if in_bag.get_child_count() > 0:
+		var trash_piece: trash_piece = in_bag.get_child(0)
+		trash_piece.call_deferred("reparent", trash_pool)
+		return true
+	else:
+		return false
 
 func spawn_trash(location: Vector2) -> void:
 	if trash_pool.get_child_count() > 0:
