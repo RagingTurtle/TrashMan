@@ -1,11 +1,28 @@
-[gd_scene load_steps=14 format=3 uid="uid://xjpdjj7anmy8"]
+[gd_scene load_steps=18 format=3 uid="uid://xjpdjj7anmy8"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_4w5o2"]
 [ext_resource type="PackedScene" uid="uid://74j6otae3ed" path="res://scenes/joystick_ui.tscn" id="2_kdwkk"]
 [ext_resource type="PackedScene" uid="uid://cjngg7k0w7xju" path="res://scenes/managers/coin_manager.tscn" id="3_kjjam"]
+[ext_resource type="Texture2D" uid="uid://ibhpwc18v4yo" path="res://Sprites/trashCoin-sheet.png" id="3_usvwu"]
+[ext_resource type="FontFile" uid="uid://cqsvwr0rmlcn0" path="res://Fonts/TrashMan.ttf" id="4_mekse"]
 [ext_resource type="Texture2D" uid="uid://dargb3drmhcs" path="res://Sprites/Grass.png" id="4_uvox0"]
 [ext_resource type="Texture2D" uid="uid://dcq34tibpprgd" path="res://Sprites/fence.png" id="5_bm6or"]
 [ext_resource type="PackedScene" uid="uid://cg1yna7m25nqf" path="res://scenes/managers/trash_manager.tscn" id="7_b683o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ven6"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 0.588235)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_j6qc6"]
+font = ExtResource("4_mekse")
+font_size = 20
+outline_size = 1
+outline_color = Color(0.109804, 0.109804, 0.109804, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.815686)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p4gql"]
 texture = ExtResource("4_uvox0")
@@ -109,12 +126,36 @@ offset_bottom = -100.0
 grow_vertical = 0
 scale = Vector2(2, 2)
 
-[node name="Coin Manager" parent="UILayer/HUD" instance=ExtResource("3_kjjam")]
-layout_mode = 1
+[node name="Coin Display" type="Panel" parent="UILayer/HUD"]
+layout_mode = 0
 offset_left = 25.0
 offset_top = 25.0
-offset_right = 25.0
-offset_bottom = 25.0
+offset_right = 121.0
+offset_bottom = 57.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ven6")
+
+[node name="Coin" type="Sprite2D" parent="UILayer/HUD/Coin Display"]
+texture = ExtResource("3_usvwu")
+offset = Vector2(16, 16)
+hframes = 8
+
+[node name="Coin Counter" type="Label" parent="UILayer/HUD/Coin Display"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(16, 16)
+text = "9999"
+label_settings = SubResource("LabelSettings_j6qc6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TileMaps" type="Node2D" parent="."]
 
@@ -131,3 +172,5 @@ layer_0/name = "Above"
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 1, 196608, 0, 1, 262144, 0, 1, 327680, 0, 1, 393216, 0, 1, 14, 65536, 0, 1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 65536, 0, 6, 65536, 0, 7, 65536, 0, 8, 65536, 0, 9, 65536, 0, 10, 65536, 0, 11, 65536, 0, 12, 65536, 0, 13, 65536, 0, 15, 65536, 0, 16, 65536, 0, 17, 65536, 0, 18, 65536, 0, 19, 65536, 0, 20, 65536, 0, 21, 65536, 0, 22, 65536, 0, 23, 65536, 0, 24, 65536, 0, 25, 65536, 0, 26, 65536, 0, 27, 65536, 0, 28, 65536, 0, 29, 65536, 0, 30, 65536, 0, 31, 65536, 0, 32, 65536, 0, 33, 65536, 0, 34, 65536, 0, 35, 65536, 0, 36, 65536, 0, 37, 65536, 0, 38, 65536, 0, 39, 131072, 0, 524288, 0, 1, 589824, 0, 1, 655360, 0, 1, 720896, 0, 1, 786432, 0, 1, 851968, 0, 1, 917504, 0, 1, 983040, 0, 1, 1048576, 0, 1, 1179648, 0, 1, 1245184, 0, 1, 65575, 131072, 1, 131111, 131072, 1, 196647, 131072, 1, 262183, 131072, 1, 327719, 131072, 1, 393255, 131072, 1, 458791, 131072, 1, 524327, 131072, 1, 589863, 131072, 1, 655399, 131072, 1, 720935, 131072, 1, 786471, 131072, 1, 852007, 131072, 1, 917543, 131072, 1, 983079, 131072, 1, 1048615, 131072, 1, 1114151, 131072, 1, 1179687, 131072, 1, 1245223, 131072, 1, 1310721, 65536, 2, 1310722, 65536, 2, 1310723, 65536, 2, 1310724, 65536, 2, 1310725, 65536, 2, 1310726, 65536, 2, 1310727, 65536, 2, 1310728, 65536, 2, 1310729, 65536, 2, 1310730, 65536, 2, 1310731, 65536, 2, 1310732, 65536, 2, 1310733, 65536, 2, 1310734, 65536, 2, 1310735, 65536, 2, 1310736, 65536, 2, 1310737, 65536, 2, 1310738, 65536, 2, 1310739, 65536, 2, 1310740, 65536, 2, 1310741, 65536, 2, 1310742, 65536, 2, 1310743, 65536, 2, 1310744, 65536, 2, 1310745, 65536, 2, 1310746, 65536, 2, 1310747, 65536, 2, 1310748, 65536, 2, 1310749, 65536, 2, 1310750, 65536, 2, 1310751, 65536, 2, 1310752, 65536, 2, 1310753, 65536, 2, 1310754, 65536, 2, 1310755, 65536, 2, 1310756, 65536, 2, 1310757, 65536, 2, 1310758, 65536, 2, 1310759, 131072, 2, 1114112, 0, 1, 458752, 0, 1, 1310720, 0, 2)
 
 [node name="Trash Manager" parent="." instance=ExtResource("7_b683o")]
+
+[node name="Coin Manager" parent="." instance=ExtResource("3_kjjam")]
